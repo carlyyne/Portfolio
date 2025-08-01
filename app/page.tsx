@@ -265,7 +265,8 @@ export default function Portfolio() {
                   Développement Full-Stack
                 </Badge>
                 <Badge variant="secondary" className="bg-orange-100 text-orange-700">
-                  Intelligence Artificielle
+                  <span className="hidden sm:inline">Intelligence Artificielle</span>
+                  <span className="sm:hidden">IA</span>
                 </Badge>
               </div>
             </div>
