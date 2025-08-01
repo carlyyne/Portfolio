@@ -10,10 +10,8 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, RadarChart, PolarGrid
 import { useRef, useEffect, useState } from "react";
 
 export default function Portfolio() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false)
   const [selectedProject, setSelectedProject] = useState<any>(null)
-  const menuRef = useRef<HTMLDivElement>(null);
   const projects = [
     {
       title: "ChatBot - Stage CA-TS",
@@ -129,26 +127,7 @@ export default function Portfolio() {
     setTimeout(() => setCopied(false), 1500)
   }
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node)
-      ) {
-        setMenuOpen(false);
-      }
-    };
-  
-    if (menuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-  
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [menuOpen]);
+
 
   // Bloquer le scroll quand la modale est ouverte
   useEffect(() => {
@@ -173,79 +152,44 @@ export default function Portfolio() {
       </div>
 
       {/* Barre de navigation principale */}
-      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[90vw] max-w-3xl">
-        <div className="bg-black/20 backdrop-blur-md rounded-full px-6 py-4 shadow-2xl neon-border neon-animated border-white/20 flex items-center justify-between w-full" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.1), 0 4px 16px rgba(147, 51, 234, 0.1), inset 0 1px 0 rgba(255,255,255,0.2)", }} >
-          {/* Bouton burger mobile */}
-          <button className="md:hidden p-2 hover:bg-white/10 transition" onClick={() => setMenuOpen((open) => !open)} aria-label="Ouvrir le menu" >
-            {menuOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
-          </button>
-          {/* Nom centré */}
-          <div className="text-xl font-bold bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 bg-clip-text text-transparent text-center flex-1">
-            Carlyne
-          </div>
-          {/* Liens desktop */}
-          <div className="hidden md:flex space-x-6">
-            {[
-              { href: "#about", label: "À Propos" },
-              { href: "#skills", label: "Compétences" },
-              { href: "#projects", label: "Projets" },
-              { href: "#education", label: "Éducation" },
-              { href: "#contact", label: "Contact" },
-            ].map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="whitespace-nowrap text-white hover:text-pink-600 transition-all duration-300 px-3 py-2 rounded-full hover:bg-purple-50"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Menu déroulant mobile - à part de la nav */}
-        {menuOpen && (
-          <div 
-            ref={menuRef}
-            className={`md:hidden mt-2 bg-black/20 backdrop-blur-md rounded-3xl p-4 shadow-2xl neon-border neon-animated border-white/20 flex flex-col items-center justify-center
-              transform transition-all duration-700 ease-out
-              ${menuOpen 
-                ? 'translate-y-0 opacity-100 scale-100' 
-                : '-translate-y-8 opacity-0 scale-95 pointer-events-none'
-              }
-            `}
-            style={{
-              boxShadow:
-                "0 8px 32px rgba(0,0,0,0.1), 0 4px 16px rgba(147, 51, 234, 0.1), inset 0 1px 0 rgba(255,255,255,0.2)",
-            }}
+              <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[90vw] max-w-3xl">
+          <div className="bg-black/20 backdrop-blur-md rounded-full px-6 py-4 shadow-2xl neon-border neon-animated border-white/20 flex items-center justify-between w-full" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.1), 0 4px 16px rgba(147, 51, 234,0.1), inset 0 1px 0 rgba(255,255,255,0.2)", }} >
+            {/* Nom centré */}
+            <div className="text-xl font-bold bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 bg-clip-text text-transparent text-center flex-1">
+              Carlyne Barrachin
+            </div>
+            {/* Icône contact mobile */}
+            <button 
+              className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-all duration-200 text-white"
+              onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+              aria-label="Aller à la section contact"
             >
-          {[
-            { href: "#about", label: "À Propos" },
-            { href: "#skills", label: "Compétences" },
-            { href: "#projects", label: "Projets" },
-            { href: "#education", label: "Éducation" },
-            { href: "#contact", label: "Contact" },
-          ].map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="block text-white px-4 py-2 rounded-3xl hover:bg-purple-50 hover:text-pink-600 transition"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
-                setMenuOpen(false);
-              }}
-              >
-              {item.label}
-            </a>
-          ))}
+              <Mail className="w-5 h-5" />
+            </button>
+            {/* Liens desktop */}
+            <div className="hidden md:flex space-x-6">
+              {[
+                { href: "#about", label: "À Propos" },
+                { href: "#skills", label: "Compétences" },
+                { href: "#projects", label: "Projets" },
+                { href: "#education", label: "Éducation" },
+                { href: "#contact", label: "Contact" },
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="whitespace-nowrap text-white hover:text-pink-600 transition-all duration-300 px-3 py-2 rounded-full hover:bg-purple-50"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
-          )}
-      </nav>
+        </nav>
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center min-h-[100vh] text-center">
@@ -256,7 +200,7 @@ export default function Portfolio() {
               alt="Profile"
               width={120}
               height={120}
-              className="rounded-full w-full h-full object-cover bg-white neon-border neon-animated"
+              className="rounded-full w-full h-full object-cover"
             />
           </div>
         </div>
@@ -276,7 +220,7 @@ export default function Portfolio() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/CV/CVBARRACHIN_Carlyne.pdf" download>
             <Button
-              className="sm:neon-animated bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white rounded-full px-8 py-3 shadow-lg hover:from-pink-600 hover:to-purple-700 transition">
+              className="neon-animated bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white rounded-full px-8 py-3 shadow-lg hover:from-pink-600 hover:to-purple-700 transition">
               <Download className="mr-2" />
                 Télécharger CV
             </Button>
@@ -284,8 +228,7 @@ export default function Portfolio() {
           <a href="#contact">
             <Button
               variant="outline"
-              className="rounded-full px-8 py-3 neon-animated text-white hover:bg-purple-100 bg-transparent"
-            >
+              className="rounded-full px-8 py-3 neon-animated text-white hover:bg-purple-100 bg-transparent">
               <Mail className="w-4 h-4 mr-2" />
                 Me Contacter
             </Button>
@@ -613,7 +556,7 @@ export default function Portfolio() {
               <Card key={index} className="rounded-2xl max-w-xs flex-shrink-0 flex flex-col justify-between hover:brightness-90">
                 <div className="relative">
                   <Image
-                    src={project.image || "/placeholder.svg"}
+                    src={project.image}
                     alt={project.title}
                     width={300}
                     height={200}
