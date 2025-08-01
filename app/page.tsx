@@ -150,13 +150,26 @@ export default function Portfolio() {
     };
   }, [menuOpen]);
 
+  // Bloquer le scroll quand la modale est ouverte
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black relative">
       {/* Halos lumineux */}
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute left-[-10%] top-[-10%] w-[600px] h-[600px] rounded-full bg-purple-700 opacity-40 blur-3xl" />
-        <div className="absolute right-[-10%] top-[20%] w-[500px] h-[500px] rounded-full bg-yellow-600 opacity-30 blur-3xl" />
-        <div className="absolute left-1/2 top-2/3 w-[400px] h-[400px] rounded-full bg-pink-500 opacity-40 blur-3xl -translate-x-1/2 -translate-y-1/2" />      
+        <div className="absolute left-[-10%] top-[-10%] md:w-[600px] md:h-[600px] sm:w-[500px] sm:h-[500px] w-[300px] h-[300px] rounded-full bg-purple-700 opacity-40 blur-3xl" />
+        <div className="absolute right-[-10%] top-[20%] md:w-[500px] md:h-[500px] sm:w-[400px] sm:h-[400px] w-[250px] h-[250px] rounded-full bg-yellow-600 opacity-30 blur-3xl" />
+        <div className="absolute left-1/2 top-2/3 md:w-[400px] md:h-[400px] sm:w-[300px] sm:h-[300px] w-[200px] h-[200px] rounded-full bg-pink-500 opacity-40 blur-3xl -translate-x-1/2 -translate-y-1/2" />      
       </div>
 
       {/* Barre de navigation principale */}
@@ -247,23 +260,23 @@ export default function Portfolio() {
             />
           </div>
         </div>
-        <span className="inline-block px-6 py-2 mb-8 rounded-full bg-white/10 text-sm text-white font-medium backdrop-blur-md border border-white/20">
+        <span className="inline-block px-6 py-2 mb-8 rounded-full bg-white/10 text-sm text-white font-medium backdrop-blur-md border border-white/20 m-2">
           Software Developer and Data Engineer
         </span>
-        <h1 className="text-5xl md:text-7xl font-extrabold mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mb-6 m-1">
           <span className="text-white">Bonjour, je suis</span>
           <br />
           <span className="bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg">
             Carlyne Barrachin
           </span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-xl mx-auto">
+        <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-xl sm:mx-auto m-2">
           Étudiante Ingénieure | Informatique, Données et Usages
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/CV/CVBARRACHIN_Carlyne.pdf" download>
             <Button
-              className="neon-animated bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white rounded-full px-8 py-3 shadow-lg hover:from-pink-600 hover:to-purple-700 transition">
+              className="sm:neon-animated bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white rounded-full px-8 py-3 shadow-lg hover:from-pink-600 hover:to-purple-700 transition">
               <Download className="mr-2" />
                 Télécharger CV
             </Button>
@@ -281,18 +294,18 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-black/50 relative z-10 rounded-3xl mx-5 neon-animated">
+      <section id="about" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 relative z-10 rounded-3xl mx-5 neon-animated">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4 text-pink-200">
+          <div className="text-center mb-6 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-pink-200">
               À Propos
             </h2>
-            <div className="w-24 h-1 bg-pink-200 mx-auto rounded-full"></div>
+            <div className="w-12 md:w-24 h-1 bg-pink-200 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-semibold mb-6 text-pink-200">
+              <h3 className="text-lg md:text-2xl font-semibold mb-4 sm:mb-6 text-pink-200 text-center sm:text-left">
                 Utiliser les données pour répondre aux besoins
               </h3>
               <p className="text-pink-50 mb-6 leading-relaxed text text-justify">
@@ -317,29 +330,29 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
-              <Card className="text-center p-6 neon-border neon-animated border-purple-200 hover:shadow-lg transition-shadow">
-                <Code2 className="w-12 h-12 mx-auto mb-4 text-purple-600" />
+            <div className="grid grid-cols-2 gap-3 sm:gap-6">
+              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-purple-200 transition-shadow">
+                <Code2 className="w-8 h-8 sm:w-12 sm:h-12 mx-auto sm:mb-4 text-purple-600" />
                 <h4 className="font-semibold text-gray-800">Code Propre</h4>
-                <p className="text-sm text-gray-600 mt-2">Solutions maintenables et évolutives</p>
+                <p className="text-sm text-gray-600 mt-1 sm:mt-2">Solutions maintenables et évolutives</p>
               </Card>
 
-              <Card className="text-center p-6 neon-border neon-animated border-blue-200 hover:shadow-lg transition-shadow">
-                <Database className="w-12 h-12 mx-auto mb-4 text-blue-600" />
+              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-blue-200 transition-shadow">
+                <Database className="w-8 h-8 sm:w-12 sm:h-12 mx-auto sm:mb-4 text-blue-600" />
                 <h4 className="font-semibold text-gray-800">Data-Driven</h4>
-                <p className="text-sm text-gray-600 mt-2">Décisions basées sur les données</p>
+                <p className="text-sm text-gray-600 mt-1 sm:mt-2">Décisions basées sur les données</p>
               </Card>
 
-              <Card className="text-center p-6 neon-border neon-animated border-green-200 hover:shadow-lg transition-shadow">
-                <Brain className="w-12 h-12 mx-auto mb-4 text-green-600" />
+              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-green-200 transition-shadow">
+                <Brain className="w-8 h-8 sm:w-12 sm:h-12 mx-auto sm:mb-4 text-green-600" />
                 <h4 className="font-semibold text-gray-800">IA/ML</h4>
-                <p className="text-sm text-gray-600 mt-2">Systèmes intelligents</p>
+                <p className="text-sm text-gray-600 mt-1 sm:mt-2">Systèmes intelligents</p>
               </Card>
 
-              <Card className="text-center p-6 neon-border neon-animated border-orange-200 hover:shadow-lg transition-shadow">
-                <Globe className="w-12 h-12 mx-auto mb-4 text-orange-600" />
+              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-orange-200 transition-shadow">
+                <Globe className="w-8 h-8 sm:w-12 sm:h-12 mx-auto sm:mb-4 text-orange-600" />
                 <h4 className="font-semibold text-gray-800">International</h4>
-                <p className="text-sm text-gray-600 mt-2">Expérience multiculturelle</p>
+                <p className="text-sm text-gray-600 mt-1 sm:mt-2">Expérience multiculturelle</p>
               </Card>
             </div>
           </div>
@@ -347,10 +360,10 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Dashboard Section */}
-      <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
+      <section id="skills" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-purple-200">
+          <div className="text-center mb-6 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-extrabold mt-4 mb-4 text-purple-200">
               Dashboard Compétences
             </h2>
           <div className="w-20 h-1 mx-auto bg-purple-200 rounded-full"></div>
@@ -360,7 +373,7 @@ export default function Portfolio() {
         </div>
 
         {/* Dashboard Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-8">
           {/* Hard Skills Bar Chart */}
           <Card className="bg-white/5 border border-purple-400/20 rounded-2xl hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-shadow">
             <CardHeader>
@@ -384,8 +397,7 @@ export default function Portfolio() {
                         { skill: "Vue.js", proficiency: 1},
                         { skill: "Dart", proficiency: 1},
                         { skill: "Flutter", proficiency: 1},
-                      ]}
-                            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                      ]} margin={{ top: 0, right: 0, left: -40, bottom: 0 }}
                     >
                     <XAxis dataKey="skill" angle={-45} textAnchor="end" height={80} fontSize={13} tick={{ fill: "#E9D5FF", fontWeight: 600 }}/>
                     <YAxis domain={[0, 4]} fontSize={13} tick={{ fill: "#E9D5FF", fontWeight: 600 }}/>                
@@ -411,18 +423,18 @@ export default function Portfolio() {
             <CardContent>
               <div className="relative h-[300px] w-full">
                 {[
-                  { word: "Réactive", size: "text-4xl", color: "text-fuchsia-300", top: "5%", left: "10%" },
-                  { word: "Autonome", size: "text-lg", color: "text-purple-300", top: "23%", left: "60%" },
+                  { word: "Réactive", size: "text-2xl sm:text-4xl", color: "text-fuchsia-300", top: "0%", left: "10%" },
+                  { word: "Autonome", size: "text-sm sm:text-2xl", color: "text-purple-300", top: "20%", left: "70%" },
                   { word: "Dynamique", size: "text-2xl", color: "text-pink-400", top: "40%", left: "5%" },
-                  { word: "Motivée", size: "text-3xl", color: "text-purple-400", top: "15%", left: "40%" },
-                  { word: "Rigoureuse", size: "text-base", color: "text-blue-300", top: "50%", left: "28%" },
-                  { word: "Organisée", size: "text-3xl", color: "text-blue-200", top: "70%", left: "40%" },
-                  { word: "Impliquée", size: "text-3xl", color: "text-pink-300", top: "50%", left: "50%" },
-                  { word: "Collaborative", size: "text-2xl", color: "text-fuchsia-200", top: "35%", left: "40%" },
-                  { word: "Curieuse", size: "text-lg", color: "text-purple-200", top: "65%", left: "70%" },
+                  { word: "Motivée", size: "text-2xl sm:text-3xl", color: "text-purple-400", top: "10%", left: "40%" },
+                  { word: "Rigoureuse", size: "text-xl", color: "text-blue-300", top: "48%", left: "29%" },
+                  { word: "Organisée", size: "text-3xl sm:text-4xl", color: "text-blue-200", top: "70%", left: "40%" },
+                  { word: "Impliquée", size: "text-2xl sm:text-3xl", color: "text-pink-300", top: "54%", left: "55%" },
+                  { word: "Collaborative", size: "text-xl sm:text-3xl", color: "text-fuchsia-200", top: "34%", left: "55%" },
+                  { word: "Curieuse", size: "text-sm sm:text-xl", color: "text-purple-200", top: "64%", left: "75%" },
                   { word: "Créative", size: "text-3xl", color: "text-pink-400", top: "25%", left: "25%" },
-                  { word: "Persévérante", size: "text-xl", color: "text-purple-300", top: "60%", left: "20%" },
-                  { word: "Responsable", size: "text-lg", color: "text-blue-300", top: "10%", left: "70%" },
+                  { word: "Persévérante", size: "text-xl sm:text-2xl", color: "text-purple-300", top: "61%", left: "20%" },
+                  { word: "Responsable", size: "text-xl", color: "text-blue-300", top: "80%", left: "10%" },
                 ].map((skill) => (
                   <span
                     key={skill.word}
@@ -447,7 +459,7 @@ export default function Portfolio() {
         </div>
 
         {/* Deuxième ligne du dashboard */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-8">
           {/* Radar Chart */}
           <Card className="bg-white/5 border border-green-400/20 rounded-2xl hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-shadow">
             <CardHeader>
@@ -470,7 +482,7 @@ export default function Portfolio() {
                       { domain: "Cloud/Azure", level: 1 },
                       { domain: "DevOps", level: 2 }
                     ]}
-                    margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+                    margin={{ top: 30, bottom: 30}}
                   >
                     <PolarGrid stroke="#E5E7EB"/>
                     <PolarAngleAxis dataKey="domain" fontSize={12} tick={{ fill: "#E9D5FF", fontWeight: 500 }} />
@@ -496,7 +508,7 @@ export default function Portfolio() {
                 Domaines par Expérience
               </CardTitle>
               <CardDescription className="text-zinc-400">
-                Stages & projets par Domaine d&apos;Expertise
+                Stages & projets par Domaine d'Expertise
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -510,21 +522,21 @@ export default function Portfolio() {
                       { exp: "Montre Connectée (2024/25)", bigData: 1, fullStack: 0, ia: 0, cloud: 0, devops: 0 },
                       { exp: "Réservation Salles (2025)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 1 },
                       { exp: "CATS (2025)", bigData: 1, fullStack: 1, ia: 1, cloud: 0, devops: 1 },
-                    ]} margin={{ top: 0, right: 30, left: 30, bottom: 70 }}> 
+                    ]} margin={{ top: 0, right: 35, left: 35, bottom: 70 }}> 
                     <XAxis
                       dataKey="exp"
                       fontSize={10}
                       tick={{ fill: "#E9D5FF", fontWeight: 600 }}
-                      angle={-30}
+                      angle={-35}
                       textAnchor="end"
-                      dy={10}
+                      dy={5}
                     />
                     <YAxis hide/>
                     <Legend 
                       layout="horizontal"
                       align="center"
                       verticalAlign="top"
-                      wrapperStyle={{ color: "#E5E7EB", fontSize: 12 }}
+                      wrapperStyle={{ color: "#E5E7EB", fontSize: 12}}
                     />                    
                     <Bar dataKey="bigData" stackId="a" fill="#8B5CF6" name="Big Data" />
                     <Bar dataKey="fullStack" stackId="a" fill="#3B82F6" name="Full Stack" />
@@ -539,7 +551,7 @@ export default function Portfolio() {
         </div>
 
         {/* Statistiques finales */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-4 sm:mt-10">
           {[
             {
               count: 3,
@@ -566,13 +578,13 @@ export default function Portfolio() {
           <div key={i} className={`
                 bg-gradient-to-tr ${stat.from} ${stat.to} 
                 backdrop-blur-sm border border-white/10
-                p-6 rounded-2xl text-white text-center 
+                p-2 sm:p-6 rounded-2xl text-white text-center 
                 shadow-md transition-shadow duration-300 ${stat.glow}
                 ${i === 2 ? 'col-span-2 md:col-span-1' : ''}
               `}
               >
-              <div className="text-5xl font-extrabold tracking-wide drop-shadow-sm">{stat.count}</div>
-              <div className="text-sm text-white/70 mt-2 tracking-wide">{stat.label}</div>
+              <div className="text-3xl sm:text-5xl font-extrabold tracking-wide drop-shadow-sm">{stat.count}</div>
+              <div className="text-xs sm:text-sm text-white/70 mt-2 tracking-wide">{stat.label}</div>
             </div>
             ))}
           </div>
@@ -580,11 +592,13 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-black/50 relative z-10 rounded-3xl mx-5 neon-animated" >
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4 text-pink-200">Projets & Expériences</h2>
-            <div className="w-24 h-1 bg-pink-200 mx-auto rounded-full"></div>
+      <section id="projects" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 relative z-10 rounded-3xl mx-5 neon-animated">
+          <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-6 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-pink-200">
+            Projets & Expériences
+            </h2>
+            <div className="w-12 md:w-24 h-1 bg-pink-200 mx-auto rounded-full"></div>
           </div>
 
           <div className="flex items-center mb-4">
@@ -610,10 +624,10 @@ export default function Portfolio() {
 
                 <CardHeader>
                   <CardTitle className="text-xl text-gray-800">{project.title}</CardTitle>
-                  <CardDescription className="text-gray-600">{project.description}</CardDescription>
+                  <CardDescription className="hidden sm:block text-gray-600">{project.description}</CardDescription>
                 </CardHeader>
 
-                <CardContent>
+                <CardContent className="hidden sm:block">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, techIndex) => (
                       <Badge key={techIndex} variant="outline" className="text-xs">
@@ -655,86 +669,103 @@ export default function Portfolio() {
 
         {selectedProject && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
             onClick={() => setSelectedProject(null)} // ferme si on clique en dehors
           >
             <div
-              className="relative bg-white rounded-2xl shadow-xl p-6 max-w-lg w-[90%] text-gray-800 animate-fade-in-up"
+              className="relative bg-white rounded-2xl shadow-xl w-[85%] max-w-xl max-h-[80vh] overflow-hidden animate-fade-in-up"
               onClick={(e) => e.stopPropagation()} // empêche de fermer si on clique dans la modale
             >
-              {/* Bouton fermer */}
-              <button
-                className="absolute top-3 right-3 text-gray-500 hover:text-black transition-all duration-300 hover:scale-110"
-                onClick={() => setSelectedProject(null)}
-                aria-label="Fermer"
-              >
-                ✕
-              </button>
-
-              {/* Titre */}
-              <h3 className="text-2xl font-bold mb-2">{selectedProject.title}</h3>
-
-              {/*Description détaillée */}
-              <FormattedText text={selectedProject.detailedDescription} />
-
-              {/* Documents */}
-              {selectedProject.documents?.length > 0 ? (
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-gray-800 mb-1">Documents :</h4>
-                  {selectedProject.documents.map((doc: any, index: any) => (
-                    <a
-                      key={index}
-                      href={doc.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-blue-600 hover:text-blue-800 text-sm underline"
-                    >
-                      📄 {doc.name}
-                    </a>
-                  ))}
+              {/* Header fixe avec titre et bouton fermer */}
+              <div className="sticky top-0 bg-white px-6 py-4 border-b border-gray-200 z-10">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg sm:text-2xl font-bold text-gray-800 pr-8">{selectedProject.title}</h3>
+                  <button
+                    className="text-gray-500 hover:text-black transition-all duration-300 hover:scale-110 p-1"
+                    onClick={() => setSelectedProject(null)}
+                    aria-label="Fermer"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
                 </div>
-              ) : (
-                <p className="text-xs text-gray-500 italic">Aucun document disponible.</p>
-              )}
+              </div>
+
+              {/* Contenu scrollable */}
+              <div className="px-6 py-4 overflow-y-auto max-h-[calc(70vh-80px)]">
+                {/* Technologies - seulement sur mobile */}
+                <div className="mb-4 sm:hidden">
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">Technologies utilisées :</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tech.map((tech: string, index: number) => (
+                      <Badge key={index} variant="outline" className="text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                {/*Description détaillée */}
+                <FormattedText text={selectedProject.detailedDescription} />
+
+                {/* Documents */}
+                {selectedProject.documents?.length > 0 ? (
+                  <div className="space-y-2 mt-4">
+                    <h4 className="text-sm font-semibold text-gray-800 mb-2">Documents :</h4>
+                    {selectedProject.documents.map((doc: any, index: any) => (
+                      <a
+                        key={index}
+                        href={doc.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-blue-600 hover:text-blue-800 text-sm underline py-1"
+                      >
+                        📄 {doc.name}
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-gray-500 italic mt-4">Aucun document disponible.</p>
+                )}
+              </div>
             </div>
           </div>
         )}
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="education" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-purple-200">
+          <div className="text-center mb-6 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-extrabold mt-4 mb-4 text-purple-200">
               Formation & Réalisations
             </h2>
             <div className="w-24 h-1 bg-purple-200 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="p-8 bg-white/5 border border-purple-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
+            <Card className="p-6 sm:p-8 bg-white/5 border border-purple-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
               <div className="flex items-start gap-5">
                 <div className="p-4 bg-purple-100 rounded-full shadow-md">
-                  <GraduationCap className="w-7 h-7 text-purple-600" />
+                  <GraduationCap className="w-4 h-4 sm:w-7 sm:h-7 text-purple-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-white mb-1">Cycle Ingénieur</h3>
-                  <p className="text-purple-400 font-medium text-lg mb-4">Polytech Annecy</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Cycle Ingénieur</h3>
+                  <p className="text-purple-400 font-medium text-base sm:text-lg mb-4">Polytech Annecy</p>
                   <Badge className="mb-4 bg-pink-200 text-pink-800 text-xs font-semibold rounded-full px-3 py-1 hover:bg-white/10 hover:text-pink-200 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.2)] transition-all duration-300">
                     🌍 ERASMUS - Semestre 1, 2024–2025 — Cluj-Napoca, Roumanie
                   </Badge>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-start gap-3">
-                        <Calendar className="w-4 h-4 text-purple-300 mt-1" />
-                        <div>
-                          <p className="text-sm text-zinc-300 font-semibold">2022 – 2025</p>
-                          <p className="text-sm text-zinc-400">Cycle Ingénieur — Spécialité Informatique, Données & Usages</p>
-                        </div>
-                      </div>
+                  <div className="space-y-2 sm:space-y-3 mb-4">
                     <div className="flex items-start gap-3">
                       <Calendar className="w-4 h-4 text-purple-300 mt-1" />
                       <div>
-                        <p className="text-sm text-zinc-300 font-semibold">2020 – 2022</p>
+                        <p className="text text-zinc-300 font-semibold">2022 – 2025</p>
+                        <p className="text-sm text-zinc-400">Cycle Ingénieur — Spécialité Informatique, Données & Usages</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Calendar className="w-4 h-4 text-purple-300 mt-1" />
+                      <div>
+                        <p className="text text-zinc-300 font-semibold">2020 – 2022</p>
                         <p className="text-sm text-zinc-400">PeiP (Parcours des écoles d'ingénieurs Polytech)</p>
                       </div>
                     </div>
@@ -743,14 +774,14 @@ export default function Portfolio() {
               </div>
             </Card>
 
-            <Card className="p-8 bg-white/5 border border-blue-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
+            <Card className="p-6 sm:p-8 bg-white/5 border border-blue-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
               <div className="flex items-start gap-5">
                 <div className="p-4 bg-blue-100 rounded-full shadow-md">
-                  <Award className="w-7 h-7 text-blue-600" />
+                  <Award className="w-4 h-4 sm:w-7 sm:h-7 text-blue-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-white mb-4">Réalisations Clés</h3>
-                  <ul className="space-y-4 text-sm text-zinc-300">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Réalisations Clés</h3>
+                  <ul className="space-y-2 sm:space-y-4 text-sm text-zinc-300">
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full"></div>
                       <div>
@@ -795,28 +826,28 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-black/50 rounded-3xl m-5 neon-animated">
+      <section id="contact" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 rounded-3xl m-5 neon-animated">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4 text-pink-200">
+          <div className="text-center mb-6 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-pink-200">
               Travaillons Ensemble
             </h2>
             <div className="w-24 h-1 bg-pink-200 mx-auto rounded-full"></div>
-            <p className="text-pink-50 mt-6 max-w-2xl mx-auto text-lg">
+            <p className="text-pink-50 mt-4 sm:mt-6 max-w-2xl mx-auto text-sm sm:text-lg">
               Je suis toujours ouverte aux nouvelles opportunités, projets innovants ou simplement pour échanger.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-10">
             {/* Colonne gauche */}
             <div className="flex flex-col justify-between gap-8">
               {/* Localisation */}
               <div className="flex items-center gap-5 text-white justify-center">
                 <div className="p-4 bg-white/10 border border-white/20 rounded-full shadow-md">
-                  <MapPin className="w-6 h-6" />
+                  <MapPin className="w-4 h-4 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-xl ">Localisation</h4>
+                  <h4 className="font-semibold text-lg sm:text-xl ">Localisation</h4>
                   <p className="text-zinc-300">Allonzier-la-Caille, France</p>
                 </div>
               </div>
@@ -827,17 +858,17 @@ export default function Portfolio() {
                 <Button
                   size="icon"
                   variant="outline"
-                  className="border-white/5 neon-animated py-4 px-8 rounded-full shadow-lg bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 text-white hover:text-white flex items-center gap-3 hover:brightness-125 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition-all"
+                  className="border-white/5 sm:neon-animated py-4 px-8 rounded-full shadow-lg bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 text-white hover:text-white flex items-center gap-3 hover:brightness-125 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition-all"
                   aria-label="GitHub"
                 >
-                  <Github className="w-6 h-6" />
+                  <Github className="w-4 h-4 sm:w-6 sm:h-6" />
                 </Button>
                 </a>
                 <a href="https://www.linkedin.com/in/carlyne-barrachin/" target="_blank" rel="noopener noreferrer">
                 <Button
                   size="icon"
                   variant="outline"
-                  className="border-white/5 neon-animated py-4 px-8 rounded-full shadow-lg bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 text-white hover:text-white flex items-center gap-3 hover:brightness-125 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition-all"
+                  className="border-white/5 sm:neon-animated py-4 px-8 rounded-full shadow-lg bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 text-white hover:text-white flex items-center gap-3 hover:brightness-125 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition-all"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-6 h-6" />
@@ -851,7 +882,7 @@ export default function Portfolio() {
               {/* Email */}
               <div className="flex items-center gap-5 text-white justify-center">
                 <div className="text-right">
-                  <h4 className="font-semibold text-xl">Email</h4>
+                  <h4 className="font-semibold text-lg sm:text-xl">Email</h4>
                   <div className="flex gap-2">
                     <p className="text-zinc-300 break-all">carlyne.barrachin@gmail.com</p>
                     <button
@@ -864,7 +895,7 @@ export default function Portfolio() {
                   </div>
                 </div>
                 <div className="p-4 bg-white/10 border border-white/20 rounded-full shadow-md">
-                  <Mail className="w-6 h-6" />
+                  <Mail className="w-4 h-4 sm:w-6 sm:h-6" />
                 </div>
               </div>
 
@@ -872,13 +903,13 @@ export default function Portfolio() {
               <div className="flex justify-center">
                 <Button
                   asChild
-                  className="border-white/5 neon-animated py-4 px-8 font-semibold rounded-full shadow-lg bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 text-white flex items-center gap-3 hover:brightness-125 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition-all"
+                  className="border-white/5 sm:neon-animated py-4 px-8 font-semibold rounded-full shadow-lg bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 text-white flex items-center gap-3 hover:brightness-125 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition-all"
                 >
                   <a
                     href={`mailto:carlyne.barrachin@gmail.com?subject=Contact%20depuis%20le%20portfolio`}
                     aria-label="Envoyer un message par email"
                   >
-                    <Mail className="w-6 h-6 -ml-1" />
+                    <Mail className="w-4 h-4 sm:w-6 sm:h-6 -ml-1" />
                     Envoyer un Message
                   </a>
                 </Button>
