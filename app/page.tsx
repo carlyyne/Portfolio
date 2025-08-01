@@ -248,18 +248,15 @@ export default function Portfolio() {
 
           <div className="grid md:grid-cols-2 gap-6 sm:gap-12 items-center">
             <div>
-              <h3 className="text-lg md:text-2xl font-semibold mb-4 sm:mb-6 text-pink-200 text-center sm:text-left">
-                Utiliser les données pour répondre aux besoins
-              </h3>
-              <p className="text-pink-50 mb-6 leading-relaxed text text-justify">
-                Étudiante en cycle ingénieur à Polytech Annecy, spécialisée en Informatique, Données et Usages. <br />
-                Après un semestre de mobilité ERASMUS à l’Université Babeş-Bolyai de Cluj-Napoca, je réalise actuellement mon stage de fin d’études au Crédit Agricole Technologies et Services (CA-TS).
-              </p>
-              <p className="text-pink-50 mb-6 leading-relaxed text text-justify">
-                Mes expériences au CERN, chez CBTW et CA-TS m'ont permis de développer une expertise technique solide en
-                développement d'applications, monitoring et intelligence artificielle. J'aime allier rigueur, technique
-                et créativité pour résoudre des problèmes complexes.
-              </p>
+            <h3 className="text-lg md:text-2xl font-semibold mb-4 sm:mb-6 text-pink-200 text-center sm:text-left">
+              Ingénieure en informatique, à la recherche de nouvelles opportunités
+            </h3>
+            <p className="text-pink-50 mb-6 leading-relaxed text text-justify">
+              Je termine actuellement mon cycle ingénieur à <span className="font-semibold">Polytech Annecy</span>, spécialité <span className="font-semibold">Informatique, Données et Usages</span>. Après un semestre en <span className="font-semibold">ERASMUS</span> à l’Université Babeş-Bolyai de <span className="font-semibold">Cluj-Napoca</span>, j’ai rejoint le <span className="font-semibold">Crédit Agricole Technologies et Services</span> pour mon stage de fin d’études.
+            </p>
+            <p className="text-pink-50 mb-6 leading-relaxed text text-justify">
+              Mes expériences au <span className="font-semibold">CERN</span>, chez <span className="font-semibold">CBTW</span> et <span className="font-semibold">CA-TS</span> m’ont permis d’acquérir des compétences solides en <span className="font-semibold">développement</span>, <span className="font-semibold">data</span>, <span className="font-semibold">monitoring</span> et <span className="font-semibold">intelligence artificielle</span>. Je suis aujourd’hui à la recherche d’un <span className="font-semibold">premier poste</span> où je pourrai mettre ces compétences au service de <span className="font-semibold">projets concrets</span> et continuer à progresser.
+            </p>
               <div className="flex flex-wrap gap-3">
                 <Badge variant="secondary" className="bg-purple-100 text-purple-700">
                   Big Data
