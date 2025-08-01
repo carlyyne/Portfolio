@@ -248,8 +248,8 @@ export default function Portfolio() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] text-center">
-        <div className="relative inline-block mb-8">
+      <section className="flex flex-col items-center justify-center min-h-[100vh] text-center">
+        <div className="mb-8 mt-10">
           <div className="w-32 h-32 rounded-full p-1">
             <Image
               src="/profile.png?height=120&width=120"
