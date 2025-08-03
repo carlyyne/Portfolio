@@ -192,7 +192,7 @@ export default function Portfolio() {
         </nav>
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-[100vh] text-center">
+      <section className="flex flex-col items-center justify-center min-h-[100vh] text-center relative z-10">
         <div className="mb-8 mt-10">
           <div className="w-32 h-32 rounded-full p-1">
             <Image
@@ -779,7 +779,8 @@ export default function Portfolio() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-10">
+          {/* Desktop Layout */}
+          <div className="hidden md:grid md:grid-cols-2 gap-4 sm:gap-10">
             {/* Colonne gauche */}
             <div className="flex flex-col justify-between gap-8">
               {/* Localisation */}
@@ -855,6 +856,83 @@ export default function Portfolio() {
                   </a>
                 </Button>
               </div>
+            </div>
+          </div>
+
+          {/* Mobile Layout */}
+          <div className="md:hidden space-y-4">
+            {/* Informations de contact */}
+            <div className="space-y-3">
+              {/* Email */}
+              <div className="flex items-center gap-4 text-white p-4 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="p-3 bg-gradient-to-r from-fuchsia-500/20 to-purple-500/20 border border-fuchsia-500/30 rounded-full">
+                  <Mail className="w-5 h-5 text-fuchsia-400" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-semibold text-lg mb-1">Email</h4>
+                  <div className="flex items-center gap-2">
+                    <p className="text-zinc-300 text-sm break-all flex-1">carlyne.barrachin@gmail.com</p>
+                    <button
+                      onClick={handleCopy}
+                      className="text-zinc-400 hover:text-fuchsia-400 transition-all duration-300 hover:scale-110 p-1"
+                      aria-label="Copier l'adresse email"
+                    >
+                      {copied ? <Check className="w-4 h-4 text-green-400" /> : <ClipboardCopy className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Localisation */}
+              <div className="flex items-center gap-4 text-white p-4 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                <div className="p-3 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full">
+                  <MapPin className="w-5 h-5 text-blue-400" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-lg mb-1">Localisation</h4>
+                  <p className="text-zinc-300 text-sm">Allonzier-la-Caille, France</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Réseaux sociaux */}
+            <div className="flex justify-center space-x-6 py-2">
+              <a href="https://github.com/carlyyne" target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="icon"
+                  variant="outline"
+                  className="border-white/5 neon-animated p-4 rounded-full shadow-lg bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 text-white hover:text-white hover:brightness-125 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition-all hover:scale-105"
+                  aria-label="GitHub"
+                >
+                  <Github className="w-6 h-6" />
+                </Button>
+              </a>
+              <a href="https://www.linkedin.com/in/carlyne-barrachin/" target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="icon"
+                  variant="outline"
+                  className="border-white/5 neon-animated p-4 rounded-full shadow-lg bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 text-white hover:text-white hover:brightness-125 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition-all hover:scale-105"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-6 h-6" />
+                </Button>
+              </a>
+            </div>
+
+            {/* Bouton Contact Principal */}
+            <div className="flex justify-center pt-2">
+              <Button
+                asChild
+                className="border-white/5 neon-animated py-4 px-8 font-semibold rounded-full shadow-lg bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 text-white flex items-center gap-3 hover:brightness-125 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-fuchsia-400 transition-all text-base"
+              >
+                <a
+                  href={`mailto:carlyne.barrachin@gmail.com?subject=Contact%20depuis%20le%20portfolio`}
+                  aria-label="Envoyer un message par email"
+                >
+                  <Mail className="w-5 h-5" />
+                  Envoyer un Message
+                </a>
+              </Button>
             </div>
           </div>
         </div>
