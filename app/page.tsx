@@ -552,20 +552,20 @@ export default function Portfolio() {
 
           <div className="flex gap-8 overflow-x-auto">
             {projects.map((project, index) => (
-              <Card key={index} className="rounded-2xl max-w-xs flex-shrink-0 flex flex-col justify-between hover:brightness-90">
+              <Card key={index} className="rounded-2xl max-w-xs flex-shrink-0 flex flex-col justify-between">
                 <div className="relative">
                   <Image
                     src={project.image}
                     alt={project.title}
                     width={300}
                     height={200}
-                    className="w-full h-48 object-cover rounded-2xl"
+                    className="w-full h-40 sm:h-48 object-cover rounded-2xl"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
                 </div>
 
-                <CardHeader>
-                  <CardTitle className="text-xl text-gray-800">{project.title}</CardTitle>
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="text-lg sm:text-xl text-gray-800">{project.title}</CardTitle>
                   <CardDescription className="hidden sm:block text-gray-600">{project.description}</CardDescription>
                 </CardHeader>
 
@@ -595,7 +595,7 @@ export default function Portfolio() {
                         <Button
                           size="sm"
                           className={
-                            `${project.github !== "null" ? "flex-1 " : "px-7 "}bg-gradient-to-r from-fuchsia-500 to-purple-800 text-white font-semibold rounded-full shadow-lg neon-animated hover:brightness-125 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.4)] transition-all duration-300`
+                            `${project.github !== "null" ? "flex-1 " : "px-7 "}py-4 bg-fuchsia-100 text-fuchsia-700 rounded-full hover:border-fuchsia-700 hover:border hover:bg-fuchsia-500/15`
                           }
                           onClick={() => setSelectedProject(project)}
                           >
@@ -688,15 +688,15 @@ export default function Portfolio() {
 
           <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
             <Card className="p-6 sm:p-8 bg-white/5 border border-purple-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
-              <div className="flex items-start gap-5">
+              <div className="flex flex-row-reverse sm:flex-row items-start gap-1 sm:gap-4">
                 <div className="p-4 bg-purple-100 rounded-full shadow-md">
                   <GraduationCap className="w-4 h-4 sm:w-7 sm:h-7 text-purple-600" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Cycle Ingénieur</h3>
-                  <p className="text-purple-400 font-medium text-base sm:text-lg mb-4">Polytech Annecy</p>
+                  <p className="text-purple-400 font-medium text-base sm:text-lg mb-3 sm:mb-4">Polytech Annecy</p>
                   <Badge className="mb-4 bg-pink-200 text-pink-800 text-xs font-semibold rounded-full px-3 py-1 hover:bg-white/10 hover:text-pink-200 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.2)] transition-all duration-300">
-                    🌍 ERASMUS - Semestre 1, 2024–2025 — Cluj-Napoca, Roumanie
+                    🌍 ERASMUS – 2024-2025 – Cluj-Napoca, Roumanie
                   </Badge>
                   <div className="space-y-2 sm:space-y-3 mb-4">
                     <div className="flex items-start gap-3">
@@ -719,12 +719,12 @@ export default function Portfolio() {
             </Card>
 
             <Card className="p-6 sm:p-8 bg-white/5 border border-blue-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
-              <div className="flex items-start gap-5">
-                <div className="p-4 bg-blue-100 rounded-full shadow-md">
+            <div className="flex flex-row-reverse sm:flex-row items-start gap-1 sm:gap-4">
+            <div className="p-4 bg-blue-100 rounded-full shadow-md">
                   <Award className="w-4 h-4 sm:w-7 sm:h-7 text-blue-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Réalisations Clés</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white m-3 sm:mb-4">Réalisations Clés</h3>
                   <ul className="space-y-2 sm:space-y-4 text-sm text-zinc-300">
                     <li className="flex items-start gap-3">
                       <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full"></div>
