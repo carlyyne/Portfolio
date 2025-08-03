@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Code2, Database, Brain, Globe, Mail, MapPin, Github, Linkedin, ExternalLink, Download, GraduationCap, Award, Calendar, Menu, X, ClipboardCopy, Check } from "lucide-react"
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, AreaChart, Area, Legend, Tooltip, CartesianGrid } from "recharts"
 import { useRef, useEffect, useState } from "react";
+import { createPortal } from 'react-dom';
 
 export default function Portfolio() {
   const [copied, setCopied] = useState(false)
@@ -152,7 +153,7 @@ export default function Portfolio() {
       </div>
 
       {/* Barre de navigation principale */}
-              <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[90vw] max-w-3xl">
+              <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-30 w-[90vw] max-w-3xl">
           <div className="bg-black/20 backdrop-blur-md rounded-full px-6 py-4 shadow-2xl neon-border neon-animated border-white/20 flex items-center justify-between w-full" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.1), 0 4px 16px rgba(147, 51, 234,0.1), inset 0 1px 0 rgba(255,255,255,0.2)", }} >
             {/* Nom centré */}
             <div className="text-xl font-bold bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 bg-clip-text text-transparent text-center flex-1">
@@ -608,69 +609,72 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {selectedProject && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
-            onClick={() => setSelectedProject(null)} // ferme si on clique en dehors
+        {selectedProject &&  
+        createPortal(
+  <div
+    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm px-2 sm:p-4"
+    onClick={() => setSelectedProject(null)}
+  >
+    <div
+      className={`
+        relative bg-white rounded-2xl shadow-xl overflow-hidden 
+        animate-fade-in-up w-full max-w-3xl h-[95vh] sm:h-auto 
+        flex flex-col
+      `}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Header fixe */}
+      <div className="sticky top-0 bg-white px-4 sm:px-6 py-4 border-b border-gray-200 z-10">
+        <div className="flex items-center justify-between">
+          <h3 className="text-lg sm:text-2xl font-bold text-gray-800 pr-8">{selectedProject.title}</h3>
+          <button
+            className="text-gray-500 hover:text-black transition-all duration-300 hover:scale-110 p-1"
+            onClick={() => setSelectedProject(null)}
+            aria-label="Fermer"
           >
-            <div
-              className="relative bg-white rounded-2xl shadow-xl w-[85%] max-w-xl max-h-[80vh] overflow-hidden animate-fade-in-up"
-              onClick={(e) => e.stopPropagation()} // empêche de fermer si on clique dans la modale
-            >
-              {/* Header fixe avec titre et bouton fermer */}
-              <div className="sticky top-0 bg-white px-6 py-4 border-b border-gray-200 z-10">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg sm:text-2xl font-bold text-gray-800 pr-8">{selectedProject.title}</h3>
-                  <button
-                    className="text-gray-500 hover:text-black transition-all duration-300 hover:scale-110 p-1"
-                    onClick={() => setSelectedProject(null)}
-                    aria-label="Fermer"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-              </div>
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
 
-              {/* Contenu scrollable */}
-              <div className="px-6 py-4 overflow-y-auto max-h-[calc(70vh-80px)]">
-                {/* Technologies - seulement sur mobile */}
-                <div className="mb-4 sm:hidden">
-                  <h4 className="text-sm font-semibold text-gray-800 mb-2">Technologies utilisées :</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.tech.map((tech: string, index: number) => (
-                      <Badge key={index} variant="outline" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-
-                {/*Description détaillée */}
-                <FormattedText text={selectedProject.detailedDescription} />
-
-                {/* Documents */}
-                {selectedProject.documents?.length > 0 ? (
-                  <div className="space-y-2 mt-4">
-                    <h4 className="text-sm font-semibold text-gray-800 mb-2">Documents :</h4>
-                    {selectedProject.documents.map((doc: any, index: any) => (
-                      <a
-                        key={index}
-                        href={doc.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block text-blue-600 hover:text-blue-800 text-sm underline py-1"
-                      >
-                        📄 {doc.name}
-                      </a>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-xs text-gray-500 italic mt-4">Aucun document disponible.</p>
-                )}
-              </div>
-            </div>
+      {/* Contenu scrollable */}
+      <div className="px-4 sm:px-6 py-4 overflow-y-auto flex-1">
+        <div className="mb-4 sm:hidden">
+          <h4 className="text-sm font-semibold text-gray-800 mb-2">Technologies utilisées :</h4>
+          <div className="flex flex-wrap gap-2">
+            {selectedProject.tech.map((tech: string, index: number) => (
+              <Badge key={index} variant="outline" className="text-xs">
+                {tech}
+              </Badge>
+            ))}
           </div>
+        </div>
+
+        <FormattedText text={selectedProject.detailedDescription} />
+
+        {selectedProject.documents?.length > 0 ? (
+          <div className="space-y-2 mt-4">
+            <h4 className="text-sm font-semibold text-gray-800 mb-2">Documents :</h4>
+            {selectedProject.documents.map((doc: any, index: any) => (
+              <a
+                key={index}
+                href={doc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-blue-600 hover:text-blue-800 text-sm underline py-1"
+              >
+                📄 {doc.name}
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p className="text-xs text-gray-500 italic mt-4">Aucun document disponible.</p>
         )}
+      </div>
+          </div>
+        </div>,
+        document.body
+      )}
       </section>
 
       {/* Education Section */}
