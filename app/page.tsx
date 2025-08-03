@@ -147,8 +147,8 @@ export default function Portfolio() {
     <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black relative">
       {/* Halos lumineux */}
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute left-[-10%] top-[-10%] md:w-[600px] md:h-[600px] sm:w-[500px] sm:h-[500px] w-[300px] h-[300px] rounded-full bg-purple-700 opacity-40 blur-3xl" />
-        <div className="absolute right-[-10%] top-[20%] md:w-[500px] md:h-[500px] sm:w-[400px] sm:h-[400px] w-[250px] h-[250px] rounded-full bg-yellow-600 opacity-30 blur-3xl" />
+        <div className="absolute left-[-15%] top-[-10%] sm:left-[-20%] sm:top-[-30%] md:left-[-10%] md:top-[-10%] md:w-[600px] md:h-[600px] sm:w-[500px] sm:h-[500px] w-[300px] h-[300px] rounded-full bg-purple-700 opacity-40 blur-3xl" />
+        <div className="absolute right-[-20%] md:right-[-10%] top-[20%] md:w-[500px] md:h-[500px] sm:w-[400px] sm:h-[400px] w-[250px] h-[250px] rounded-full bg-yellow-600 opacity-30 blur-3xl" />
         <div className="absolute left-1/2 top-2/3 md:w-[400px] md:h-[400px] sm:w-[300px] sm:h-[300px] w-[200px] h-[200px] rounded-full bg-pink-500 opacity-40 blur-3xl -translate-x-1/2 -translate-y-1/2" />      
       </div>
 
@@ -688,81 +688,83 @@ export default function Portfolio() {
 
           <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
             <Card className="p-6 sm:p-8 bg-white/5 border border-purple-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
-              <div className="flex flex-row-reverse sm:flex-row items-start gap-1 sm:gap-4">
-                <div className="p-4 bg-purple-100 rounded-full shadow-md">
+              <div className="flex flex-row gap-4 items-start" >
+                <div className="p-4 bg-purple-100 rounded-full shadow-md mb-4">
                   <GraduationCap className="w-4 h-4 sm:w-7 sm:h-7 text-purple-600" />
                 </div>
-                <div className="flex-1">
+                <div>
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Cycle Ingénieur</h3>
                   <p className="text-purple-400 font-medium text-base sm:text-lg mb-3 sm:mb-4">Polytech Annecy</p>
-                  <Badge className="mb-4 bg-pink-200 text-pink-800 text-xs font-semibold rounded-full px-3 py-1 hover:bg-white/10 hover:text-pink-200 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.2)] transition-all duration-300">
-                    🌍 ERASMUS – 2024-2025 – Cluj-Napoca, Roumanie
-                  </Badge>
-                  <div className="space-y-2 sm:space-y-3 mb-4">
-                    <div className="flex items-start gap-3">
-                      <Calendar className="w-4 h-4 text-purple-300 mt-1" />
-                      <div>
-                        <p className="text text-zinc-300 font-semibold">2022 – 2025</p>
-                        <p className="text-sm text-zinc-400">Cycle Ingénieur — Spécialité Informatique, Données & Usages</p>
-                      </div>
+                </div>
+              </div>
+              <div className="">
+                <Badge className="mb-4 bg-pink-200 text-pink-800 text-xs font-semibold rounded-full px-3 py-1 hover:bg-white/10 hover:text-pink-200 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.2)] transition-all duration-300">
+                  🌍 ERASMUS – 2024-2025 – Cluj-Napoca, Roumanie
+                </Badge>
+                <div className="space-y-2 sm:space-y-3 mb-4">
+                  <div className="flex items-start gap-3">
+                    <Calendar className="w-4 h-4 text-purple-300 mt-1" />
+                    <div>
+                      <p className="text text-zinc-300 font-semibold">2022 – 2025</p>
+                      <p className="text-sm text-zinc-400">Cycle Ingénieur — Spécialité Informatique, Données & Usages</p>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <Calendar className="w-4 h-4 text-purple-300 mt-1" />
-                      <div>
-                        <p className="text text-zinc-300 font-semibold">2020 – 2022</p>
-                        <p className="text-sm text-zinc-400">PeiP (Parcours des écoles d'ingénieurs Polytech)</p>
-                      </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Calendar className="w-4 h-4 text-purple-300 mt-1" />
+                    <div>
+                      <p className="text text-zinc-300 font-semibold">2020 – 2022</p>
+                      <p className="text-sm text-zinc-400">PeiP (Parcours des écoles d'ingénieurs Polytech)</p>
                     </div>
                   </div>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-6 sm:p-8 bg-white/5 border border-blue-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
-            <div className="flex flex-row-reverse sm:flex-row items-start gap-1 sm:gap-4">
-            <div className="p-4 bg-blue-100 rounded-full shadow-md">
+            <Card className="p-6 sm:p-8 bg-white/5 border border-purple-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
+              <div className="flex flex-row gap-4 items-start" >
+                <div className="p-4 bg-purple-100 rounded-full shadow-md mb-4">
                   <Award className="w-4 h-4 sm:w-7 sm:h-7 text-blue-600" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white m-3 sm:mb-4">Réalisations Clés</h3>
-                  <ul className="space-y-2 sm:space-y-4 text-sm text-zinc-300">
-                    <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full"></div>
-                      <div>
-                        <p className="font-medium text-white">Stage orienté IA – Développement ChatBot au CA-TS</p>
-                        <p className="text-xs text-zinc-400">2025</p>
-                      </div>
-                    </li>
+                <h3 className="text-xl sm:text-2xl font-bold text-white m-3 sm:mb-4">Réalisations Clés</h3>
+              </div>
+              <div>
+                <ul className="space-y-2 sm:space-y-4 text-sm text-zinc-300">
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full"></div>
+                    <div>
+                      <p className="font-medium text-white">Stage orienté IA – Développement ChatBot au CA-TS</p>
+                      <p className="text-xs text-zinc-400">2025</p>
+                    </div>
+                  </li>
 
-                    <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 mt-2 bg-purple-500 rounded-full"></div>
-                      <div>
-                        <p className="font-medium text-white">TOEIC 890 – Niveau B2 Anglais</p>
-                        <p className="text-xs text-zinc-400">2024</p>
-                      </div>
-                    </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 mt-2 bg-purple-500 rounded-full"></div>
+                    <div>
+                      <p className="font-medium text-white">TOEIC 890 – Niveau B2 Anglais</p>
+                      <p className="text-xs text-zinc-400">2024</p>
+                    </div>
+                  </li>
 
-                    <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 mt-2 bg-pink-500 rounded-full"></div>
-                      <div>
-                        <p className="font-medium text-white">Stage au CERN, Collaboration en anglais</p>
-                        <p className="text-xs text-zinc-400">2023</p>
-                      </div>
-                    </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 mt-2 bg-pink-500 rounded-full"></div>
+                    <div>
+                      <p className="font-medium text-white">Stage au CERN, Collaboration en anglais</p>
+                      <p className="text-xs text-zinc-400">2023</p>
+                    </div>
+                  </li>
 
-                    <li className="flex items-start gap-3">
-                      <div className="w-2 h-2 mt-2 bg-orange-500 rounded-full"></div>
-                      <div>
-                        <p className="font-medium text-white">Vie associative à Polytech</p>
-                        <p className="text-xs text-zinc-400 mb-1">2023–2024</p>
-                        <ul className="text-zinc-400 list-disc list-inside text-sm space-y-1">
-                          <li>Membre active du BDE Polytech</li>
-                          <li>Responsable communication d’une association de photos</li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 mt-2 bg-orange-500 rounded-full"></div>
+                    <div>
+                      <p className="font-medium text-white">Vie associative à Polytech</p>
+                      <p className="text-xs text-zinc-400 mb-1">2023–2024</p>
+                      <ul className="text-zinc-400 list-disc list-inside text-sm space-y-1">
+                        <li>Membre active du BDE Polytech</li>
+                        <li>Responsable communication d’une association de photos</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </Card>
           </div>
@@ -899,7 +901,7 @@ export default function Portfolio() {
             </div>
 
             {/* Réseaux sociaux */}
-            <div className="flex justify-center space-x-6 py-2">
+            <div className="flex justify-center space-x-6">
               <a href="https://github.com/carlyyne" target="_blank" rel="noopener noreferrer">
                 <Button
                   size="icon"
@@ -923,10 +925,10 @@ export default function Portfolio() {
             </div>
 
             {/* Bouton Contact Principal */}
-            <div className="flex justify-center pt-2">
+            <div className="flex justify-center">
               <Button
                 asChild
-                className="p-4 bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 border border-purple-500/30 bg-transparent rounded-full hover:bg-purple-500/20 hover:to-fuchsia-500/20"
+                className="bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 border border-purple-500/30 bg-transparent rounded-full hover:bg-purple-500/20 hover:to-fuchsia-500/20"
                 >
                 <a
                   href={`mailto:carlyne.barrachin@gmail.com?subject=Contact%20depuis%20le%20portfolio`}
