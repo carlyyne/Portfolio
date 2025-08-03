@@ -775,7 +775,7 @@ export default function Portfolio() {
       <section id="contact" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 rounded-3xl m-5 neon-animated">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-6 md:mb-16">
-            <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-white">
+            <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-pink-200">
               Travaillons Ensemble
             </h2>
             <div className="w-24 h-1 bg-pink-200 mx-auto rounded-full"></div>
