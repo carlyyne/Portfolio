@@ -156,7 +156,7 @@ export default function Portfolio() {
               <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-30 w-[90vw] max-w-3xl">
           <div className="bg-black/20 backdrop-blur-md rounded-full px-6 py-4 shadow-2xl neon-border neon-animated border-white/20 flex items-center justify-between w-full" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.1), 0 4px 16px rgba(147, 51, 234,0.1), inset 0 1px 0 rgba(255,255,255,0.2)", }} >
             {/* Nom centré */}
-            <div className="text-xl font-bold bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 bg-clip-text text-transparent text-center flex-1">
+            <div className="text-xl font-extrabold bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 bg-clip-text text-transparent text-center flex-1">
               Carlyne Barrachin
             </div>
             {/* Icône contact mobile */}
@@ -803,7 +803,7 @@ export default function Portfolio() {
                 <Button
                   size="icon"
                   variant="outline"
-                  className="py-4 px-8 bg-gradient-to-r from-pink-500/20 to-fuchsia-500/20 border border-pink-500/30 bg-transparent rounded-full hover:bg-pink-500/20 hover:to-fuchsia-500/20"
+                  className="py-4 px-8 bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 border border-purple-500/30 bg-transparent rounded-full hover:bg-purple-500/20 hover:to-fuchsia-500/20"
                   aria-label="GitHub"
                 >
                   <Github className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
@@ -813,7 +813,7 @@ export default function Portfolio() {
                 <Button
                   size="icon"
                   variant="outline"
-                  className="py-4 px-8 bg-gradient-to-r from-pink-500/20 to-fuchsia-500/20 border border-pink-500/30 bg-transparent rounded-full hover:bg-pink-500/20 hover:to-fuchsia-500/20"
+                  className="py-4 px-8 bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 border border-purple-500/30 bg-transparent rounded-full hover:bg-purple-500/20 hover:to-fuchsia-500/20"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-6 h-6 text-white" />
@@ -848,7 +848,7 @@ export default function Portfolio() {
               <div className="flex justify-center">
                 <Button
                   asChild
-                  className="px-6 py-4 bg-gradient-to-r from-pink-500/20 to-fuchsia-500/20 border border-pink-500/30 bg-transparent rounded-full hover:bg-pink-500/20 hover:to-fuchsia-500/20"
+                  className="px-6 py-4 bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 border border-purple-500/30 bg-transparent rounded-full hover:bg-purple-500/20 hover:to-fuchsia-500/20"
                   >
                   <a
                     href={`mailto:carlyne.barrachin@gmail.com?subject=Contact%20depuis%20le%20portfolio`}
@@ -904,7 +904,7 @@ export default function Portfolio() {
                 <Button
                   size="icon"
                   variant="outline"
-                  className="px-8 py-4 bg-gradient-to-r from-pink-500/20 to-fuchsia-500/20 border border-pink-500/30 bg-transparent rounded-full hover:bg-pink-500/20 hover:to-fuchsia-500/20"
+                  className="px-8 py-4 bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 border border-purple-500/30 bg-transparent rounded-full hover:bg-purple-500/20 hover:to-fuchsia-500/20"
                   aria-label="GitHub"
                 >
                   <Github className="w-6 h-6 text-white" />
@@ -914,7 +914,7 @@ export default function Portfolio() {
                 <Button
                   size="icon"
                   variant="outline"
-                  className="px-8 py-4 bg-gradient-to-r from-pink-500/20 to-fuchsia-500/20 border border-pink-500/30 bg-transparent rounded-full hover:bg-pink-500/20 hover:to-fuchsia-500/20"
+                  className="px-8 py-4 bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 border border-purple-500/30 bg-transparent rounded-full hover:bg-purple-500/20 hover:to-fuchsia-500/20"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-6 h-6 text-white" />
@@ -926,7 +926,7 @@ export default function Portfolio() {
             <div className="flex justify-center pt-2">
               <Button
                 asChild
-                className="p-4 bg-gradient-to-r from-pink-500/20 to-fuchsia-500/20 border border-pink-500/30 bg-transparent rounded-full hover:bg-pink-500/20 hover:to-fuchsia-500/20"
+                className="p-4 bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 border border-purple-500/30 bg-transparent rounded-full hover:bg-purple-500/20 hover:to-fuchsia-500/20"
                 >
                 <a
                   href={`mailto:carlyne.barrachin@gmail.com?subject=Contact%20depuis%20le%20portfolio`}
