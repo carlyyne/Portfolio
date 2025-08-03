@@ -617,7 +617,7 @@ export default function Portfolio() {
           <div
             className={`
               relative bg-white rounded-2xl shadow-xl overflow-hidden 
-              animate-fade-in-up w-full max-w-3xl h-[80vh] sm:h-auto 
+              animate-fade-in-up w-full max-w-3xl h-[75vh] sm:h-auto 
               flex flex-col
             `}
             onClick={(e) => e.stopPropagation()}
