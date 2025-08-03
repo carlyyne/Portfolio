@@ -147,9 +147,9 @@ export default function Portfolio() {
     <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black relative">
       {/* Halos lumineux */}
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute left-[-15%] top-[-10%] sm:left-[-20%] sm:top-[-30%] md:left-[-10%] md:top-[-10%] md:w-[600px] md:h-[600px] sm:w-[500px] sm:h-[500px] w-[300px] h-[300px] rounded-full bg-purple-700 opacity-40 blur-3xl" />
-        <div className="absolute right-[-20%] md:right-[-10%] top-[20%] md:w-[500px] md:h-[500px] sm:w-[400px] sm:h-[400px] w-[250px] h-[250px] rounded-full bg-yellow-600 opacity-30 blur-3xl" />
-        <div className="absolute left-1/2 top-2/3 md:w-[400px] md:h-[400px] sm:w-[300px] sm:h-[300px] w-[200px] h-[200px] rounded-full bg-pink-500 opacity-40 blur-3xl -translate-x-1/2 -translate-y-1/2" />      
+        <div className="absolute left-[-20%] top-[-10%] sm:left-[-20%] sm:top-[-30%] md:left-[-10%] md:top-[-10%] md:w-[600px] md:h-[600px] sm:w-[500px] sm:h-[500px] w-[250px] h-[250px] rounded-full bg-purple-700 opacity-40 blur-3xl" />
+        <div className="absolute right-[-20%] md:right-[-10%] top-[20%] md:w-[500px] md:h-[500px] sm:w-[400px] sm:h-[400px] w-[150px] h-[150px] rounded-full bg-yellow-600 opacity-40 blur-3xl" />
+        <div className="absolute left-1/2 top-2/3 md:w-[400px] md:h-[400px] sm:w-[300px] sm:h-[300px] w-[150px] h-[150px] rounded-full bg-pink-500 opacity-40 blur-3xl -translate-x-1/2 -translate-y-1/2" />      
       </div>
 
       {/* Barre de navigation principale */}
@@ -534,7 +534,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 relative z-10 rounded-3xl mx-5 neon-animated">
+      <section id="projects" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 relative z-10 rounded-3xl mt-6 mx-5 neon-animated">
           <div className="max-w-7xl mx-auto">
           <div className="text-center mb-6 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-pink-200">
@@ -699,7 +699,7 @@ export default function Portfolio() {
               </div>
               <div className="">
                 <Badge className="mb-4 bg-pink-200 text-pink-800 text-xs font-semibold rounded-full px-3 py-1 hover:bg-white/10 hover:text-pink-200 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.2)] transition-all duration-300">
-                  🌍 ERASMUS – 2024-2025 – Cluj-Napoca, Roumanie
+                  🌍 ERASMUS – 2024-2025 – Cluj-Napoca, RO
                 </Badge>
                 <div className="space-y-2 sm:space-y-3 mb-4">
                   <div className="flex items-start gap-3">
