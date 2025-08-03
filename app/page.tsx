@@ -609,68 +609,67 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {selectedProject &&  
-        createPortal(
-  <div
-    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm px-2 sm:p-4"
-    onClick={() => setSelectedProject(null)}
-  >
-    <div
-      className={`
-        relative bg-white rounded-2xl shadow-xl overflow-hidden 
-        animate-fade-in-up w-full max-w-3xl h-[95vh] sm:h-auto 
-        flex flex-col
-      `}
-      onClick={(e) => e.stopPropagation()}
-    >
-      {/* Header fixe */}
-      <div className="sticky top-0 bg-white px-4 sm:px-6 py-4 border-b border-gray-200 z-10">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg sm:text-2xl font-bold text-gray-800 pr-8">{selectedProject.title}</h3>
-          <button
-            className="text-gray-500 hover:text-black transition-all duration-300 hover:scale-110 p-1"
-            onClick={() => setSelectedProject(null)}
-            aria-label="Fermer"
+        {selectedProject && createPortal(
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm px-2 sm:p-4"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className={`
+              relative bg-white rounded-2xl shadow-xl overflow-hidden 
+              animate-fade-in-up w-full max-w-3xl h-[90vh] sm:h-auto 
+              flex flex-col
+            `}
+            onClick={(e) => e.stopPropagation()}
           >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-      </div>
+            {/* Header fixe */}
+            <div className="sticky top-0 bg-white px-4 sm:px-6 py-4 border-b border-gray-200 z-10">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg sm:text-2xl font-bold text-gray-800 pr-8">{selectedProject.title}</h3>
+                <button
+                  className="text-gray-500 hover:text-black transition-all duration-300 hover:scale-110 p-1"
+                  onClick={() => setSelectedProject(null)}
+                  aria-label="Fermer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
 
-      {/* Contenu scrollable */}
-      <div className="px-4 sm:px-6 py-4 overflow-y-auto flex-1">
-        <div className="mb-4 sm:hidden">
-          <h4 className="text-sm font-semibold text-gray-800 mb-2">Technologies utilisées :</h4>
-          <div className="flex flex-wrap gap-2">
-            {selectedProject.tech.map((tech: string, index: number) => (
-              <Badge key={index} variant="outline" className="text-xs">
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </div>
+            {/* Contenu scrollable */}
+            <div className="px-4 sm:px-6 py-4 overflow-y-auto flex-1">
+              <div className="mb-4 sm:hidden">
+                <h4 className="text-sm font-semibold text-gray-800 mb-2">Technologies utilisées :</h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tech.map((tech: string, index: number) => (
+                    <Badge key={index} variant="outline" className="text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
 
-        <FormattedText text={selectedProject.detailedDescription} />
+              <FormattedText text={selectedProject.detailedDescription} />
 
-        {selectedProject.documents?.length > 0 ? (
-          <div className="space-y-2 mt-4">
-            <h4 className="text-sm font-semibold text-gray-800 mb-2">Documents :</h4>
-            {selectedProject.documents.map((doc: any, index: any) => (
-              <a
-                key={index}
-                href={doc.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-blue-600 hover:text-blue-800 text-sm underline py-1"
-              >
-                📄 {doc.name}
-              </a>
-            ))}
-          </div>
-        ) : (
-          <p className="text-xs text-gray-500 italic mt-4">Aucun document disponible.</p>
-        )}
-      </div>
+              {selectedProject.documents?.length > 0 ? (
+                <div className="space-y-2 mt-4">
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">Documents :</h4>
+                  {selectedProject.documents.map((doc: any, index: any) => (
+                    <a
+                      key={index}
+                      href={doc.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-blue-600 hover:text-blue-800 text-sm underline py-1"
+                    >
+                      📄 {doc.name}
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-xs text-gray-500 italic mt-4">Aucun document disponible.</p>
+              )}
+            </div>
           </div>
         </div>,
         document.body
