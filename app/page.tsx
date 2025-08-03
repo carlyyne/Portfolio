@@ -273,25 +273,25 @@ export default function Portfolio() {
             </div>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-6">
-              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-purple-200 transition-shadow">
+              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-purple-200 transition-shadow content-center">
                 <Code2 className="w-8 h-8 sm:w-12 sm:h-12 mx-auto sm:mb-4 text-purple-600" />
                 <h4 className="font-semibold text-gray-800">Code Propre</h4>
                 <p className="text-sm text-gray-600 mt-1 sm:mt-2">Solutions maintenables et évolutives</p>
               </Card>
 
-              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-blue-200 transition-shadow">
+              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-blue-200 transition-shadow content-center">
                 <Database className="w-8 h-8 sm:w-12 sm:h-12 mx-auto sm:mb-4 text-blue-600" />
                 <h4 className="font-semibold text-gray-800">Data-Driven</h4>
                 <p className="text-sm text-gray-600 mt-1 sm:mt-2">Décisions basées sur les données</p>
               </Card>
 
-              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-green-200 transition-shadow">
+              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-green-200 transition-shadow content-center">
                 <Brain className="w-8 h-8 sm:w-12 sm:h-12 mx-auto sm:mb-4 text-green-600" />
                 <h4 className="font-semibold text-gray-800">IA/ML</h4>
                 <p className="text-sm text-gray-600 mt-1 sm:mt-2">Systèmes intelligents</p>
               </Card>
 
-              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-orange-200 transition-shadow">
+              <Card className="text-center p-1 sm:p-6 neon-border sm:neon-animated border-orange-200 transition-shadow content-center">
                 <Globe className="w-8 h-8 sm:w-12 sm:h-12 mx-auto sm:mb-4 text-orange-600" />
                 <h4 className="font-semibold text-gray-800">International</h4>
                 <p className="text-sm text-gray-600 mt-1 sm:mt-2">Expérience multiculturelle</p>
