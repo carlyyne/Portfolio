@@ -238,7 +238,7 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 relative z-10 rounded-3xl mx-5 neon-animated">
+      <section id="about" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black relative z-10 rounded-3xl mx-5 neon-animated">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-6 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-pink-200">
@@ -534,7 +534,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 relative z-10 rounded-3xl mt-6 mx-5 neon-animated">
+      <section id="projects" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black relative z-10 rounded-3xl mt-6 mx-5 neon-animated">
           <div className="max-w-7xl mx-auto">
           <div className="text-center mb-6 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-pink-200">
@@ -772,7 +772,7 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/50 rounded-3xl m-5 neon-animated">
+      <section id="contact" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-black relative z-10 rounded-3xl m-5 neon-animated">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-6 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-pink-200">
