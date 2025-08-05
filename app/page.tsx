@@ -614,7 +614,7 @@ export default function Portfolio() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-[300px]">
+              <div className="h-[200px] sm:h-[250px] md:h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={[
                         { skill: "Python", proficiency: 3 },
@@ -654,7 +654,7 @@ export default function Portfolio() {
               />
             </CardHeader>
             <CardContent>
-              <div ref={containerRef} className="h-[300px] w-full">
+              <div ref={containerRef} className="h-[200px] sm:h-[250px] md:h-[300px] w-full">
                 {size.width > 0 && size.height > 0 && (
                   <WordCloud
                     data={filteredData}
@@ -662,9 +662,9 @@ export default function Portfolio() {
                     height={size.height}
                     font="sans-serif"
                     fontSize={(word) => word.value * (size.width / 500)}
-                    spiral="archimedean"
+                    // spiral="archimedean"
                     rotate={() => 0}
-                    padding={1.5}
+                    padding={0}
                     random={() => 0.45}
                     fill={(d: any, i: number) =>
                       ["#ec4899", "#d946ef", "#a78bfa", "#7dd3fc", "#f472b6", "#c084fc"][i % 6]
@@ -690,7 +690,7 @@ export default function Portfolio() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-[300px]">
+              <div className="h-[200px] sm:h-[250px] md:h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <RadarChart
                     data={[
@@ -700,7 +700,6 @@ export default function Portfolio() {
                       { domain: "Cloud/Azure", level: 1 },
                       { domain: "DevOps", level: 2 }
                     ]}
-                    margin={{ top: 30, bottom: 30}}
                   >
                     <PolarGrid stroke="#E5E7EB"/>
                     <PolarAngleAxis dataKey="domain" fontSize={12} tick={{ fill: "#E9D5FF", fontWeight: 500 }} />
@@ -730,7 +729,7 @@ export default function Portfolio() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-[300px]">
+              <div className="h-[200px] sm:h-[250px] md:h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data = {[
                       { exp: "CERN (2023)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 0 },
