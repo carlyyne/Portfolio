@@ -646,7 +646,7 @@ export default function Portfolio() {
                 Quelles qualités personnelles me guident dans mes projets ?
               </CardDescription>
               <Input
-                placeholder="Rechercher une compétence..."
+                placeholder="Rechercher une qualité..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="bg-zinc-800 bg-transparent text-sm text-white placeholder-zinc-500 border-fuchsia-400/20"
