@@ -664,7 +664,7 @@ export default function Portfolio() {
                     fontSize={(word) => word.value}
                     spiral="archimedean"
                     rotate={() => 0}
-                    padding={1}
+                    padding={2.2}
                     random={() => 0.45}
                     fill={(d: any, i: number) =>
                       ["#ec4899", "#d946ef", "#a78bfa", "#7dd3fc", "#f472b6", "#c084fc"][i % 6]

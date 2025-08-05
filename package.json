@@ -53,6 +53,7 @@
     "react-d3-cloud": "^1.0.6",
     "react-day-picker": "8.10.1",
     "react-dom": "^19.1.0",
+    "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
     "react-wordcloud": "^1.2.7",
