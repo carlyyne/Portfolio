@@ -150,8 +150,7 @@ export default function Portfolio() {
     { text: "Collaborative", value: 25 },
     { text: "Curieuse", value: 25 },
     { text: "Créative", value: 30 },
-    { text: "Persévérante", value: 25 },
-    { text: "Responsable", value: 25 },
+    { text: "Persévérante", value: 25 }
   ];
 
   function FormattedText({ text }: { text: string }) {
@@ -610,7 +609,7 @@ export default function Portfolio() {
                 Hard Skills
               </CardTitle>
               <CardDescription className="text-zinc-400">
-                Nombre de projets majeurs réalisés par langage et framework
+                Combien de projets majeurs ont été réalisés par langage et framework ?
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -644,13 +643,13 @@ export default function Portfolio() {
                 Soft Skills
               </CardTitle>
               <CardDescription className="text-zinc-400">
-                Qualités personnelles & communication
+                Quelles qualités personnelles me guident dans mes projets ?
               </CardDescription>
               <Input
                 placeholder="Rechercher une compétence..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="bg-zinc-800 bg-transparent text-white placeholder-zinc-500 border-fuchsia-400/20"
+                className="bg-zinc-800 bg-transparent text-sm text-white placeholder-zinc-500 border-fuchsia-400/20"
               />
             </CardHeader>
             <CardContent>
@@ -686,7 +685,7 @@ export default function Portfolio() {
                 Domaines d'Expertise
               </CardTitle>
               <CardDescription className="text-zinc-400">
-                Nombre de projets majeurs réalisés par domaine technique
+                Combien de projets ai-je réalisés dans chaque domaine ?
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -725,7 +724,7 @@ export default function Portfolio() {
                 Domaines par Expérience
               </CardTitle>
               <CardDescription className="text-zinc-400">
-                Stages & projets par Domaine d'Expertise
+                Stages & projets : quels domaines ont été mobilisés ?
               </CardDescription>
             </CardHeader>
             <CardContent>
