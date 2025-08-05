@@ -625,7 +625,7 @@ export default function Portfolio() {
                         { skill: "Vue.js", proficiency: 1},
                         { skill: "Dart", proficiency: 1},
                         { skill: "Flutter", proficiency: 1},
-                      ]} margin={{ top: 20, right: 10, left: -30, bottom: -20 }}
+                      ]} margin={{ top: 0, right: 10, left: -30, bottom: -20 }}
                     >
                     <XAxis dataKey="skill" angle={-45} textAnchor="end" height={80} fontSize={13} tick={{ fill: "#E9D5FF", fontWeight: 600 }}/>
                     <YAxis domain={[0, 4]} fontSize={13} tick={{ fill: "#E9D5FF", fontWeight: 600 }}/>                
@@ -661,8 +661,8 @@ export default function Portfolio() {
                     width={size.width}
                     height={size.height}
                     font="sans-serif"
-                    fontSize={(word) => word.value * (size.width / 500)}
-                    // spiral="archimedean"
+                    fontSize={(word) => word.value * (size.width / 400)}
+                    spiral="archimedean"
                     rotate={() => 0}
                     padding={0}
                     random={() => 0.45}
@@ -739,7 +739,7 @@ export default function Portfolio() {
                       { exp: "Montre Connectée (2024/25)", bigData: 1, fullStack: 0, ia: 0, cloud: 0, devops: 0 },
                       { exp: "Réservation Salles (2025)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 1 },
                       { exp: "CATS (2025)", bigData: 1, fullStack: 1, ia: 1, cloud: 0, devops: 1 },
-                    ]} margin={{ top: 0, right: 35, left: 35, bottom: 70 }}> 
+                    ]} margin={{ top: 0, right: 30, left: 35, bottom: 70 }}> 
                     <XAxis
                       dataKey="exp"
                       fontSize={10}
@@ -751,9 +751,12 @@ export default function Portfolio() {
                     <YAxis hide/>
                     <Legend 
                       layout="horizontal"
-                      align="center"
+                      align="left"
                       verticalAlign="top"
-                      wrapperStyle={{ color: "#E5E7EB", fontSize: 12}}
+                      wrapperStyle={{
+                        color: "#E5E7EB",
+                        fontSize: 12,
+                      }}
                     />                    
                     <Bar dataKey="bigData" stackId="a" fill="#8B5CF6" name="Big Data" />
                     <Bar dataKey="fullStack" stackId="a" fill="#3B82F6" name="Full Stack" />
