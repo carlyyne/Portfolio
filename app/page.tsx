@@ -7,12 +7,44 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Code2, Database, Brain, Globe, Mail, MapPin, Github, Linkedin, ExternalLink, Download, GraduationCap, Award, Calendar, Menu, X, ClipboardCopy, Check } from "lucide-react"
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, AreaChart, Area, Legend, Tooltip, CartesianGrid } from "recharts"
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { createPortal } from 'react-dom';
+import WordCloud from "react-d3-cloud";
+import { Input } from "@/components/ui/input";
 
 export default function Portfolio() {
   const [copied, setCopied] = useState(false)
   const [selectedProject, setSelectedProject] = useState<any>(null)
+  const [search, setSearch] = useState("");
+
+  function useContainerSize() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [size, setSize] = useState({ width: 0, height: 0 });
+
+    useLayoutEffect(() => {
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          if (entry.contentRect) {
+            setSize({
+              width: entry.contentRect.width,
+              height: entry.contentRect.height,
+            });
+          }
+        }
+      });
+
+      if (containerRef.current) {
+        resizeObserver.observe(containerRef.current);
+      }
+
+      return () => resizeObserver.disconnect();
+    }, []);
+
+    return [containerRef, size] as const;
+  }
+  const [containerRef, size] = useContainerSize();
+
+
   const projects = [
     {
       title: "ChatBot - Stage CA-TS",
@@ -107,6 +139,20 @@ export default function Portfolio() {
       ],
     },
   ]
+  const data = [
+    { text: "Réactive", value: 40 },
+    { text: "Autonome", value: 30 },
+    { text: "Dynamique", value: 30 },
+    { text: "Motivée", value: 40 },
+    { text: "Rigoureuse", value: 15 },
+    { text: "Organisée", value: 40 },
+    { text: "Impliquée", value: 35 },
+    { text: "Collaborative", value: 25 },
+    { text: "Curieuse", value: 15 },
+    { text: "Créative", value: 40 },
+    { text: "Persévérante", value: 20 },
+    { text: "Responsable", value: 25 },
+  ];
 
   function FormattedText({ text }: { text: string }) {
     return text.split('\n').map((line, index) => (
@@ -128,7 +174,9 @@ export default function Portfolio() {
     setTimeout(() => setCopied(false), 1500)
   }
 
-
+  const filteredData = data.filter((item) =>
+    item.text.toLowerCase().includes(search.toLowerCase())
+  );
 
   // Bloquer le scroll quand la modale est ouverte
   useEffect(() => {
@@ -301,234 +349,97 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Skills Dashboard Section */}
-      <section id="skills" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 relative z-10">
+{/* Education Section */}
+<section id="education" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-6 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold mt-4 mb-4 text-purple-200">
-              Dashboard Compétences
+              Formation & Réalisations
             </h2>
-          <div className="w-20 h-1 mx-auto bg-purple-200 rounded-full"></div>
-          <p className="mt-4 text-purple-50 max-w-xl mx-auto">
-            Visualisation interactive de mes compétences techniques & personnelles
-          </p>
-        </div>
+            <div className="w-24 h-1 bg-purple-200 mx-auto rounded-full"></div>
+          </div>
 
-        {/* Dashboard Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-8">
-          {/* Hard Skills Bar Chart */}
-          <Card className="bg-white/5 border border-purple-400/20 rounded-2xl hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white text-xl">
-                <Code2 className="w-5 h-5 text-purple-400" />
-                Hard Skills
-              </CardTitle>
-              <CardDescription className="text-zinc-400">
-                Nombre de projets majeurs réalisés par langage et framework
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={[
-                        { skill: "Python", proficiency: 3 },
-                        { skill: "TypeScript", proficiency: 3},
-                        { skill: "Angular", proficiency: 2},
-                        { skill: "Java", proficiency: 1},
-                        { skill: "NestJS", proficiency: 1},
-                        { skill: "Vue.js", proficiency: 1},
-                        { skill: "Dart", proficiency: 1},
-                        { skill: "Flutter", proficiency: 1},
-                      ]} margin={{ top: 0, right: 0, left: -40, bottom: 0 }}
-                    >
-                    <XAxis dataKey="skill" angle={-45} textAnchor="end" height={80} fontSize={13} tick={{ fill: "#E9D5FF", fontWeight: 600 }}/>
-                    <YAxis domain={[0, 4]} fontSize={13} tick={{ fill: "#E9D5FF", fontWeight: 600 }}/>                
-                    <Bar dataKey="proficiency" fill="#8B5CF6" radius={[4, 4, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
+            <Card className="p-6 sm:p-8 bg-white/5 border border-purple-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
+              <div className="flex flex-row gap-4 items-start" >
+                <div className="p-4 bg-purple-100 rounded-full shadow-md mb-4">
+                  <GraduationCap className="w-4 h-4 sm:w-7 sm:h-7 text-purple-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Cycle Ingénieur</h3>
+                  <p className="text-purple-400 font-medium text-base sm:text-lg mb-3 sm:mb-4">Polytech Annecy</p>
+                </div>
               </div>
-            </CardContent>
-          </Card>
-
-          {/* Soft Skills Word Cloud */}
-          <Card className="bg-white/5 border border-fuchsia-400/20 rounded-2xl hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white text-xl">
-                <Brain className="w-5 h-5 text-fuchsia-400" />
-                Soft Skills
-              </CardTitle>
-              <CardDescription className="text-zinc-400">
-                Qualités personnelles & communication
-              </CardDescription>
-            </CardHeader>
-
-            <CardContent>
-              <div className="relative h-[300px] w-full">
-                {[
-                  { word: "Réactive", size: "text-2xl sm:text-4xl", color: "text-fuchsia-300", top: "0%", left: "10%" },
-                  { word: "Autonome", size: "text-sm sm:text-2xl", color: "text-purple-300", top: "20%", left: "70%" },
-                  { word: "Dynamique", size: "text-2xl", color: "text-pink-400", top: "40%", left: "5%" },
-                  { word: "Motivée", size: "text-2xl sm:text-3xl", color: "text-purple-400", top: "10%", left: "40%" },
-                  { word: "Rigoureuse", size: "text-xl", color: "text-blue-300", top: "48%", left: "29%" },
-                  { word: "Organisée", size: "text-3xl sm:text-4xl", color: "text-blue-200", top: "70%", left: "40%" },
-                  { word: "Impliquée", size: "text-2xl sm:text-3xl", color: "text-pink-300", top: "54%", left: "55%" },
-                  { word: "Collaborative", size: "text-xl sm:text-3xl", color: "text-fuchsia-200", top: "34%", left: "55%" },
-                  { word: "Curieuse", size: "text-sm sm:text-xl", color: "text-purple-200", top: "64%", left: "75%" },
-                  { word: "Créative", size: "text-3xl", color: "text-pink-400", top: "25%", left: "25%" },
-                  { word: "Persévérante", size: "text-xl sm:text-2xl", color: "text-purple-300", top: "61%", left: "20%" },
-                  { word: "Responsable", size: "text-xl", color: "text-blue-300", top: "80%", left: "10%" },
-                ].map((skill) => (
-                  <span
-                    key={skill.word}
-                    className={`
-                      ${skill.size} ${skill.color}
-                      absolute font-bold transition-transform duration-300
-                      hover:scale-110 hover:text-white
-                      whitespace-nowrap
-                    `}
-                    style={{
-                      top: skill.top,
-                      left: skill.left,
-                      textShadow: "1px 1px 2px rgba(0,0,0,0.3)",
-                    }}
-                  >
-                    {skill.word}
-                  </span>
-                ))}
+              <div className="">
+                <Badge className="mb-4 bg-pink-200 text-pink-800 text-xs font-semibold rounded-full px-3 py-1 hover:bg-white/10 hover:text-pink-200 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.2)] transition-all duration-300">
+                  🌍 ERASMUS – 2024-2025 – Cluj-Napoca, RO
+                </Badge>
+                <div className="space-y-2 sm:space-y-3 mb-4">
+                  <div className="flex items-start gap-3">
+                    <Calendar className="w-4 h-4 text-purple-300 mt-1" />
+                    <div>
+                      <p className="text text-zinc-300 font-semibold">2022 – 2025</p>
+                      <p className="text-sm text-zinc-400">Cycle Ingénieur — Spécialité Informatique, Données & Usages</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Calendar className="w-4 h-4 text-purple-300 mt-1" />
+                    <div>
+                      <p className="text text-zinc-300 font-semibold">2020 – 2022</p>
+                      <p className="text-sm text-zinc-400">PeiP (Parcours des écoles d'ingénieurs Polytech)</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+            </Card>
 
-        {/* Deuxième ligne du dashboard */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-8">
-          {/* Radar Chart */}
-          <Card className="bg-white/5 border border-green-400/20 rounded-2xl hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white text-xl">
-                <Database className="w-5 h-5 text-green-400" />
-                Domaines d'Expertise
-              </CardTitle>
-              <CardDescription className="text-zinc-400">
-                Nombre de projets majeurs réalisés par domaine technique
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RadarChart
-                    data={[
-                      { domain: "Big Data", level: 2 },
-                      { domain: "Full-Stack", level: 3 },
-                      { domain: "IA/ChatBot", level: 3 },
-                      { domain: "Cloud/Azure", level: 1 },
-                      { domain: "DevOps", level: 2 }
-                    ]}
-                    margin={{ top: 30, bottom: 30}}
-                  >
-                    <PolarGrid stroke="#E5E7EB"/>
-                    <PolarAngleAxis dataKey="domain" fontSize={12} tick={{ fill: "#E9D5FF", fontWeight: 500 }} />
-                    <PolarRadiusAxis angle={90} domain={[0, 4]} fontSize={10} tick={{ fill: "#E9D5FF", fontWeight: 600 }}/>
-                    <Radar
-                      name="Expertise"
-                      dataKey="level"
-                      stroke="#10B981"
-                      fill="#10B981"
-                      fillOpacity={0.3}
-                      strokeWidth={2}
-                    />
-                  </RadarChart>
-                </ResponsiveContainer>
+            <Card className="p-6 sm:p-8 bg-white/5 border border-purple-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
+              <div className="flex flex-row gap-4 items-start" >
+                <div className="p-4 bg-purple-100 rounded-full shadow-md mb-4">
+                  <Award className="w-4 h-4 sm:w-7 sm:h-7 text-blue-600" />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white m-3 sm:mb-4">Réalisations Clés</h3>
               </div>
-            </CardContent>
-          </Card>
+              <div>
+                <ul className="space-y-2 sm:space-y-4 text-sm text-zinc-300">
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full"></div>
+                    <div>
+                      <p className="font-medium text-white">Stage orienté IA – Développement ChatBot au CA-TS</p>
+                      <p className="text-xs text-zinc-400">2025</p>
+                    </div>
+                  </li>
 
-          <Card className="bg-white/5 border border-orange-400/20 rounded-2xl hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white text-xl">
-                <Award className="w-5 h-5 text-orange-400" />
-                Domaines par Expérience
-              </CardTitle>
-              <CardDescription className="text-zinc-400">
-                Stages & projets par Domaine d'Expertise
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data = {[
-                      { exp: "CERN (2023)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 0 },
-                      { exp: "App Budget (2024)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 0 },
-                      { exp: "CBTW (2024)", bigData: 1, fullStack: 0, ia: 0, cloud: 1, devops: 0 },
-                      { exp: "Expériences ML (2024/25)", bigData: 0, fullStack: 0, ia: 1, cloud: 0, devops: 0 },
-                      { exp: "Montre Connectée (2024/25)", bigData: 1, fullStack: 0, ia: 0, cloud: 0, devops: 0 },
-                      { exp: "Réservation Salles (2025)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 1 },
-                      { exp: "CATS (2025)", bigData: 1, fullStack: 1, ia: 1, cloud: 0, devops: 1 },
-                    ]} margin={{ top: 0, right: 35, left: 35, bottom: 70 }}> 
-                    <XAxis
-                      dataKey="exp"
-                      fontSize={10}
-                      tick={{ fill: "#E9D5FF", fontWeight: 600 }}
-                      angle={-35}
-                      textAnchor="end"
-                      dy={5}
-                    />
-                    <YAxis hide/>
-                    <Legend 
-                      layout="horizontal"
-                      align="center"
-                      verticalAlign="top"
-                      wrapperStyle={{ color: "#E5E7EB", fontSize: 12}}
-                    />                    
-                    <Bar dataKey="bigData" stackId="a" fill="#8B5CF6" name="Big Data" />
-                    <Bar dataKey="fullStack" stackId="a" fill="#3B82F6" name="Full Stack" />
-                    <Bar dataKey="ia" stackId="a" fill="#EC4899" name="IA/ChatBot" />
-                    <Bar dataKey="cloud" stackId="a" fill="#F59E42" name="Cloud/Azure" />
-                    <Bar dataKey="devops" stackId="a" fill="#10B981" name="DevOps" />
-                  </BarChart>
-                </ResponsiveContainer>
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 mt-2 bg-purple-500 rounded-full"></div>
+                    <div>
+                      <p className="font-medium text-white">TOEIC 890 – Niveau B2 Anglais</p>
+                      <p className="text-xs text-zinc-400">2024</p>
+                    </div>
+                  </li>
+
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 mt-2 bg-pink-500 rounded-full"></div>
+                    <div>
+                      <p className="font-medium text-white">Stage au CERN, Collaboration en anglais</p>
+                      <p className="text-xs text-zinc-400">2023</p>
+                    </div>
+                  </li>
+
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 mt-2 bg-orange-500 rounded-full"></div>
+                    <div>
+                      <p className="font-medium text-white">Vie associative à Polytech</p>
+                      <p className="text-xs text-zinc-400 mb-1">2023–2024</p>
+                      <ul className="text-zinc-400 list-disc list-inside text-sm space-y-1">
+                        <li>Membre active du BDE Polytech</li>
+                        <li>Responsable communication d’une association de photos</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
               </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Statistiques finales */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-4 sm:mt-10">
-          {[
-            {
-              count: 3,
-              label: "Langages Maîtrisés",
-              from: "from-purple-300/10",
-              to: "to-purple-700/30",
-              glow: "hover:shadow-[0_0_30px_rgba(168,85,247,0.5)]"  
-            },
-            {
-              count: 3,
-              label: "Stages Réalisés",
-              from: "from-pink-300/10",
-              to: "to-pink-700/30",
-              glow: "hover:shadow-[0_0_30px_rgba(236,72,153,0.5)]",
-            },
-            {
-              count: 2,
-              label: "Langues Parlées (FR/EN)",
-              from: "from-orange-300/10",
-              to: "to-orange-700/30",
-              glow: "hover:shadow-[0_0_30px_rgba(249,115,22,0.5)]",
-            },
-          ].map((stat, i) => (
-          <div key={i} className={`
-                bg-gradient-to-tr ${stat.from} ${stat.to} 
-                backdrop-blur-sm border border-white/10
-                p-2 sm:p-6 rounded-2xl text-white text-center 
-                shadow-md transition-shadow duration-300 ${stat.glow}
-                ${i === 2 ? 'col-span-2 md:col-span-1' : ''}
-              `}
-              >
-              <div className="text-3xl sm:text-5xl font-extrabold tracking-wide drop-shadow-sm">{stat.count}</div>
-              <div className="text-xs sm:text-sm text-white/70 mt-2 tracking-wide">{stat.label}</div>
-            </div>
-            ))}
+            </Card>
           </div>
         </div>
       </section>
@@ -676,97 +587,224 @@ export default function Portfolio() {
       )}
       </section>
 
-      {/* Education Section */}
-      <section id="education" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
+      {/* Skills Dashboard Section */}
+      <section id="skills" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-6 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold mt-4 mb-4 text-purple-200">
-              Formation & Réalisations
+              Dashboard Compétences
             </h2>
-            <div className="w-24 h-1 bg-purple-200 mx-auto rounded-full"></div>
-          </div>
+          <div className="w-20 h-1 mx-auto bg-purple-200 rounded-full"></div>
+          <p className="mt-4 text-purple-50 max-w-xl mx-auto">
+            Visualisation interactive de mes compétences techniques & personnelles
+          </p>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
-            <Card className="p-6 sm:p-8 bg-white/5 border border-purple-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
-              <div className="flex flex-row gap-4 items-start" >
-                <div className="p-4 bg-purple-100 rounded-full shadow-md mb-4">
-                  <GraduationCap className="w-4 h-4 sm:w-7 sm:h-7 text-purple-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Cycle Ingénieur</h3>
-                  <p className="text-purple-400 font-medium text-base sm:text-lg mb-3 sm:mb-4">Polytech Annecy</p>
-                </div>
+        {/* Dashboard Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-8">
+          {/* Hard Skills Bar Chart */}
+          <Card className="bg-white/5 border border-purple-400/20 rounded-2xl hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-white text-xl">
+                <Code2 className="w-5 h-5 text-purple-400" />
+                Hard Skills
+              </CardTitle>
+              <CardDescription className="text-zinc-400">
+                Nombre de projets majeurs réalisés par langage et framework
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={[
+                        { skill: "Python", proficiency: 3 },
+                        { skill: "TypeScript", proficiency: 3},
+                        { skill: "Angular", proficiency: 2},
+                        { skill: "Java", proficiency: 1},
+                        { skill: "NestJS", proficiency: 1},
+                        { skill: "Vue.js", proficiency: 1},
+                        { skill: "Dart", proficiency: 1},
+                        { skill: "Flutter", proficiency: 1},
+                      ]} margin={{ top: 20, right: 10, left: -30, bottom: -20 }}
+                    >
+                    <XAxis dataKey="skill" angle={-45} textAnchor="end" height={80} fontSize={13} tick={{ fill: "#E9D5FF", fontWeight: 600 }}/>
+                    <YAxis domain={[0, 4]} fontSize={13} tick={{ fill: "#E9D5FF", fontWeight: 600 }}/>                
+                    <Bar dataKey="proficiency" fill="#8B5CF6" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
-              <div className="">
-                <Badge className="mb-4 bg-pink-200 text-pink-800 text-xs font-semibold rounded-full px-3 py-1 hover:bg-white/10 hover:text-pink-200 hover:shadow-[0_0_24px_4px_rgba(236,72,153,0.2)] transition-all duration-300">
-                  🌍 ERASMUS – 2024-2025 – Cluj-Napoca, RO
-                </Badge>
-                <div className="space-y-2 sm:space-y-3 mb-4">
-                  <div className="flex items-start gap-3">
-                    <Calendar className="w-4 h-4 text-purple-300 mt-1" />
-                    <div>
-                      <p className="text text-zinc-300 font-semibold">2022 – 2025</p>
-                      <p className="text-sm text-zinc-400">Cycle Ingénieur — Spécialité Informatique, Données & Usages</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Calendar className="w-4 h-4 text-purple-300 mt-1" />
-                    <div>
-                      <p className="text text-zinc-300 font-semibold">2020 – 2022</p>
-                      <p className="text-sm text-zinc-400">PeiP (Parcours des écoles d'ingénieurs Polytech)</p>
-                    </div>
-                  </div>
-                </div>
+            </CardContent>
+          </Card>
+
+          {/* Soft Skills Word Cloud */}
+          <Card className="bg-white/5 border border-fuchsia-400/20 rounded-2xl hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-white text-xl">
+                <Brain className="w-5 h-5 text-fuchsia-400" />
+                Soft Skills
+              </CardTitle>
+              <CardDescription className="text-zinc-400">
+                Qualités personnelles & communication
+              </CardDescription>
+              <Input
+                placeholder="Rechercher une compétence..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="bg-zinc-800 bg-transparent text-white placeholder-zinc-500 border-fuchsia-400/20"
+              />
+            </CardHeader>
+            <CardContent>
+              <div ref={containerRef} className="h-[300px] w-full">
+                {size.width > 0 && size.height > 0 && (
+                  <WordCloud
+                    data={filteredData}
+                    width={size.width}
+                    height={size.height}
+                    font="sans-serif"
+                    fontSize={(word) => word.value}
+                    spiral="archimedean"
+                    rotate={() => 0}
+                    padding={1}
+                    random={() => 0.45}
+                    fill={(d: any, i: number) =>
+                      ["#ec4899", "#d946ef", "#a78bfa", "#7dd3fc", "#f472b6", "#c084fc"][i % 6]
+                    }
+                  />
+                )}
               </div>
-            </Card>
+            </CardContent>
+          </Card>
+        </div>
 
-            <Card className="p-6 sm:p-8 bg-white/5 border border-purple-300/20 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300">
-              <div className="flex flex-row gap-4 items-start" >
-                <div className="p-4 bg-purple-100 rounded-full shadow-md mb-4">
-                  <Award className="w-4 h-4 sm:w-7 sm:h-7 text-blue-600" />
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white m-3 sm:mb-4">Réalisations Clés</h3>
+        {/* Deuxième ligne du dashboard */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-8">
+          {/* Radar Chart */}
+          <Card className="bg-white/5 border border-green-400/20 rounded-2xl hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-white text-xl">
+                <Database className="w-5 h-5 text-green-400" />
+                Domaines d'Expertise
+              </CardTitle>
+              <CardDescription className="text-zinc-400">
+                Nombre de projets majeurs réalisés par domaine technique
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RadarChart
+                    data={[
+                      { domain: "Big Data", level: 2 },
+                      { domain: "Full-Stack", level: 3 },
+                      { domain: "IA/ChatBot", level: 3 },
+                      { domain: "Cloud/Azure", level: 1 },
+                      { domain: "DevOps", level: 2 }
+                    ]}
+                    margin={{ top: 30, bottom: 30}}
+                  >
+                    <PolarGrid stroke="#E5E7EB"/>
+                    <PolarAngleAxis dataKey="domain" fontSize={12} tick={{ fill: "#E9D5FF", fontWeight: 500 }} />
+                    <PolarRadiusAxis angle={90} domain={[0, 4]} fontSize={10} tick={{ fill: "#E9D5FF", fontWeight: 600 }}/>
+                    <Radar
+                      name="Expertise"
+                      dataKey="level"
+                      stroke="#10B981"
+                      fill="#10B981"
+                      fillOpacity={0.3}
+                      strokeWidth={2}
+                    />
+                  </RadarChart>
+                </ResponsiveContainer>
               </div>
-              <div>
-                <ul className="space-y-2 sm:space-y-4 text-sm text-zinc-300">
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full"></div>
-                    <div>
-                      <p className="font-medium text-white">Stage orienté IA – Développement ChatBot au CA-TS</p>
-                      <p className="text-xs text-zinc-400">2025</p>
-                    </div>
-                  </li>
+            </CardContent>
+          </Card>
 
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 mt-2 bg-purple-500 rounded-full"></div>
-                    <div>
-                      <p className="font-medium text-white">TOEIC 890 – Niveau B2 Anglais</p>
-                      <p className="text-xs text-zinc-400">2024</p>
-                    </div>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 mt-2 bg-pink-500 rounded-full"></div>
-                    <div>
-                      <p className="font-medium text-white">Stage au CERN, Collaboration en anglais</p>
-                      <p className="text-xs text-zinc-400">2023</p>
-                    </div>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 mt-2 bg-orange-500 rounded-full"></div>
-                    <div>
-                      <p className="font-medium text-white">Vie associative à Polytech</p>
-                      <p className="text-xs text-zinc-400 mb-1">2023–2024</p>
-                      <ul className="text-zinc-400 list-disc list-inside text-sm space-y-1">
-                        <li>Membre active du BDE Polytech</li>
-                        <li>Responsable communication d’une association de photos</li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
+          <Card className="bg-white/5 border border-orange-400/20 rounded-2xl hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-white text-xl">
+                <Award className="w-5 h-5 text-orange-400" />
+                Domaines par Expérience
+              </CardTitle>
+              <CardDescription className="text-zinc-400">
+                Stages & projets par Domaine d'Expertise
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data = {[
+                      { exp: "CERN (2023)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 0 },
+                      { exp: "App Budget (2024)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 0 },
+                      { exp: "CBTW (2024)", bigData: 1, fullStack: 0, ia: 0, cloud: 1, devops: 0 },
+                      { exp: "Expériences ML (2024/25)", bigData: 0, fullStack: 0, ia: 1, cloud: 0, devops: 0 },
+                      { exp: "Montre Connectée (2024/25)", bigData: 1, fullStack: 0, ia: 0, cloud: 0, devops: 0 },
+                      { exp: "Réservation Salles (2025)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 1 },
+                      { exp: "CATS (2025)", bigData: 1, fullStack: 1, ia: 1, cloud: 0, devops: 1 },
+                    ]} margin={{ top: 0, right: 35, left: 35, bottom: 70 }}> 
+                    <XAxis
+                      dataKey="exp"
+                      fontSize={10}
+                      tick={{ fill: "#E9D5FF", fontWeight: 600 }}
+                      angle={-35}
+                      textAnchor="end"
+                      dy={5}
+                    />
+                    <YAxis hide/>
+                    <Legend 
+                      layout="horizontal"
+                      align="center"
+                      verticalAlign="top"
+                      wrapperStyle={{ color: "#E5E7EB", fontSize: 12}}
+                    />                    
+                    <Bar dataKey="bigData" stackId="a" fill="#8B5CF6" name="Big Data" />
+                    <Bar dataKey="fullStack" stackId="a" fill="#3B82F6" name="Full Stack" />
+                    <Bar dataKey="ia" stackId="a" fill="#EC4899" name="IA/ChatBot" />
+                    <Bar dataKey="cloud" stackId="a" fill="#F59E42" name="Cloud/Azure" />
+                    <Bar dataKey="devops" stackId="a" fill="#10B981" name="DevOps" />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
-            </Card>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Statistiques finales */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-4 sm:mt-10">
+          {[
+            {
+              count: 3,
+              label: "Langages Maîtrisés",
+              from: "from-purple-300/10",
+              to: "to-purple-700/30",
+              glow: "hover:shadow-[0_0_30px_rgba(168,85,247,0.5)]"  
+            },
+            {
+              count: 3,
+              label: "Stages Réalisés",
+              from: "from-pink-300/10",
+              to: "to-pink-700/30",
+              glow: "hover:shadow-[0_0_30px_rgba(236,72,153,0.5)]",
+            },
+            {
+              count: 2,
+              label: "Langues Parlées (FR/EN)",
+              from: "from-orange-300/10",
+              to: "to-orange-700/30",
+              glow: "hover:shadow-[0_0_30px_rgba(249,115,22,0.5)]",
+            },
+          ].map((stat, i) => (
+          <div key={i} className={`
+                bg-gradient-to-tr ${stat.from} ${stat.to} 
+                backdrop-blur-sm border border-white/10
+                p-2 sm:p-6 rounded-2xl text-white text-center 
+                shadow-md transition-shadow duration-300 ${stat.glow}
+                ${i === 2 ? 'col-span-2 md:col-span-1' : ''}
+              `}
+              >
+              <div className="text-3xl sm:text-5xl font-extrabold tracking-wide drop-shadow-sm">{stat.count}</div>
+              <div className="text-xs sm:text-sm text-white/70 mt-2 tracking-wide">{stat.label}</div>
+            </div>
+            ))}
           </div>
         </div>
       </section>
