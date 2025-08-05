@@ -140,17 +140,17 @@ export default function Portfolio() {
     },
   ]
   const data = [
-    { text: "Réactive", value: 40 },
+    { text: "Réactive", value: 30 },
     { text: "Autonome", value: 30 },
     { text: "Dynamique", value: 30 },
     { text: "Motivée", value: 40 },
-    { text: "Rigoureuse", value: 15 },
+    { text: "Rigoureuse", value: 25 },
     { text: "Organisée", value: 40 },
     { text: "Impliquée", value: 35 },
     { text: "Collaborative", value: 25 },
-    { text: "Curieuse", value: 15 },
-    { text: "Créative", value: 40 },
-    { text: "Persévérante", value: 20 },
+    { text: "Curieuse", value: 25 },
+    { text: "Créative", value: 30 },
+    { text: "Persévérante", value: 25 },
     { text: "Responsable", value: 25 },
   ];
 
@@ -661,7 +661,7 @@ export default function Portfolio() {
                     width={size.width}
                     height={size.height}
                     font="sans-serif"
-                    fontSize={(word) => word.value * (size.width / 450)}
+                    fontSize={(word) => word.value * (size.width / 500)}
                     spiral="archimedean"
                     rotate={() => 0}
                     padding={1.5}
