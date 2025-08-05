@@ -739,7 +739,7 @@ export default function Portfolio() {
                       { exp: "Montre Connectée (2024/25)", bigData: 1, fullStack: 0, ia: 0, cloud: 0, devops: 0 },
                       { exp: "Réservation Salles (2025)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 1 },
                       { exp: "CATS (2025)", bigData: 1, fullStack: 1, ia: 1, cloud: 0, devops: 1 },
-                    ]} margin={{ top: 0, right: 30, left: 35, bottom: 70 }}> 
+                    ]} margin={{ top: 0, right: 0, left: 35, bottom: 70 }}> 
                     <XAxis
                       dataKey="exp"
                       fontSize={10}
@@ -751,11 +751,12 @@ export default function Portfolio() {
                     <YAxis hide/>
                     <Legend 
                       layout="horizontal"
-                      align="left"
+                      align="center"
                       verticalAlign="top"
                       wrapperStyle={{
                         color: "#E5E7EB",
                         fontSize: 12,
+                        padding: 2
                       }}
                     />                    
                     <Bar dataKey="bigData" stackId="a" fill="#8B5CF6" name="Big Data" />
