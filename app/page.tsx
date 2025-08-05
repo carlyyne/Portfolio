@@ -735,16 +735,16 @@ export default function Portfolio() {
                       { exp: "CERN (2023)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 0 },
                       { exp: "App Budget (2024)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 0 },
                       { exp: "CBTW (2024)", bigData: 1, fullStack: 0, ia: 0, cloud: 1, devops: 0 },
-                      { exp: "Expériences ML (2024/25)", bigData: 0, fullStack: 0, ia: 1, cloud: 0, devops: 0 },
-                      { exp: "Montre Connectée (2024/25)", bigData: 1, fullStack: 0, ia: 0, cloud: 0, devops: 0 },
-                      { exp: "Réservation Salles (2025)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 1 },
-                      { exp: "CATS (2025)", bigData: 1, fullStack: 1, ia: 1, cloud: 0, devops: 1 },
-                    ]} margin={{ top: 0, right: 0, left: 35, bottom: 70 }}> 
+                      { exp: "Expériences ML (2025)", bigData: 0, fullStack: 0, ia: 1, cloud: 0, devops: 0 },
+                      { exp: "BigData Montre (2025)", bigData: 1, fullStack: 0, ia: 0, cloud: 0, devops: 0 },
+                      { exp: "App Réservation (2025)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 1 },
+                      { exp: "CA-TS (2025)", bigData: 1, fullStack: 1, ia: 1, cloud: 0, devops: 1 },
+                    ]} margin={{ top: 0, right: 15, left: 30, bottom: 70 }}> 
                     <XAxis
                       dataKey="exp"
                       fontSize={10}
                       tick={{ fill: "#E9D5FF", fontWeight: 600 }}
-                      angle={-35}
+                      angle={-40}
                       textAnchor="end"
                       dy={5}
                     />
