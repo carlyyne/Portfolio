@@ -200,7 +200,7 @@ export default function Portfolio() {
       </div>
 
       {/* Barre de navigation principale */}
-              <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-30 w-[90vw] max-w-3xl">
+        <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-30 w-[90vw] max-w-3xl">
           <div className="bg-black/20 backdrop-blur-md rounded-full px-6 py-4 shadow-2xl neon-border neon-animated border-white/20 flex items-center justify-between w-full" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.1), 0 4px 16px rgba(147, 51, 234,0.1), inset 0 1px 0 rgba(255,255,255,0.2)", }} >
             {/* Nom centré */}
             <div className="text-xl font-extrabold bg-gradient-to-r from-fuchsia-500 via-pink-500 to-purple-500 bg-clip-text text-transparent text-center flex-1">
@@ -218,9 +218,9 @@ export default function Portfolio() {
             <div className="hidden md:flex space-x-6">
               {[
                 { href: "#about", label: "À Propos" },
-                { href: "#skills", label: "Compétences" },
-                { href: "#projects", label: "Projets" },
                 { href: "#education", label: "Éducation" },
+                { href: "#projects", label: "Projets" },
+                { href: "#skills", label: "Compétences" },
                 { href: "#contact", label: "Contact" },
               ].map((item) => (
                 <a
@@ -460,7 +460,7 @@ export default function Portfolio() {
             </svg>
           </div>
 
-          <div className="flex gap-8 overflow-x-auto">
+          <div className="flex gap-8 overflow-x-auto hide-scrollbar">
             {projects.map((project, index) => (
               <Card key={index} className="rounded-2xl max-w-xs flex-shrink-0 flex flex-col justify-between">
                 <div className="relative">
@@ -471,7 +471,7 @@ export default function Portfolio() {
                     height={200}
                     className="w-full h-40 sm:h-48 object-cover rounded-2xl"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-2xl" />
                 </div>
 
                 <CardHeader className="p-4 sm:p-6">
