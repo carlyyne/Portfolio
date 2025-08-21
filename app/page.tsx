@@ -474,13 +474,13 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-2xl" />
                 </div>
 
-                <CardHeader className="p-4 sm:p-6">
+                <CardHeader className="px-4 py-0 sm:px-6">
                   <CardTitle className="text-lg sm:text-xl text-gray-800">{project.title}</CardTitle>
-                  <CardDescription className="hidden sm:block text-gray-600">{project.description}</CardDescription>
+                  <CardDescription className="hidden sm:block text-gray-600 text-justify">{project.description}</CardDescription>
                 </CardHeader>
 
-                <CardContent className="hidden sm:block">
-                  <div className="flex flex-wrap gap-2">
+                <CardContent className="hidden sm:block py-0">
+                  <div className="flex flex-wrap gap-2 py-4">
                     {project.tech.map((tech, techIndex) => (
                       <Badge key={techIndex} variant="outline" className="text-xs">
                         {tech}
