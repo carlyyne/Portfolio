@@ -460,7 +460,7 @@ export default function Portfolio() {
             </svg>
           </div>
 
-          <div className="flex gap-8 overflow-x-auto hide-scrollbar">
+          <div className="flex gap-8 overflow-x-auto custom-scrollbar">
             {projects.map((project, index) => (
               <Card key={index} className="rounded-2xl max-w-xs flex-shrink-0 flex flex-col justify-between">
                 <div className="relative">
@@ -474,7 +474,7 @@ export default function Portfolio() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-2xl" />
                 </div>
 
-                <CardHeader className="px-4 py-0 sm:px-6">
+                <CardHeader className="px-4 py-2 sm:px-6">
                   <CardTitle className="text-lg sm:text-xl text-gray-800">{project.title}</CardTitle>
                   <CardDescription className="hidden sm:block text-gray-600 text-justify">{project.description}</CardDescription>
                 </CardHeader>
