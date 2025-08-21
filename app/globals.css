@@ -500,3 +500,8 @@
     animation: neon-pulse 5s infinite ease-in-out;
   }
 }
+
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none !important;
+}

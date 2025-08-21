@@ -348,8 +348,8 @@ export default function Portfolio() {
         </div>
       </section>
 
-{/* Education Section */}
-<section id="education" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
+      {/* Education Section */}
+      <section id="education" className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-6 md:mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold mt-4 mb-4 text-purple-200">
