@@ -50,7 +50,7 @@ export default function Portfolio() {
       title: "ChatBot - Stage CA-TS",
       description: "Développement d'une documentation intéractive.",
       detailedDescription: "Dans le cadre de mon stage de fin d’études, j’ai développé un chatbot destiné à répondre aux questions des collaborateurs du **CA-TS** sur les projets **JAVA** internes.\nCe projet repose sur des modèles **LLM** accessibles via **AWS Bedrock** (Claude 3 Sonnet), intégrés à l’aide de l’outil **LangChain**. Les données extraites des projets sont stockées dans une base **Neo4j**, puis exploitées pour fournir des réponses personnalisées grâce à l’approche **KAG** (Knowledge-Augmented Generation).\n\nLe système combine plusieurs techniques avancées telles que le **RAG** (Retrieval-Augmented Generation), le **KAG**, et l’utilisation d’**agents IA contextuels**. Ces agents remplissent des rôles précis, comme :\n- Traduire une question utilisateur en une **Cypher query** pour interroger Neo4j.\n- Expliquer des données issues de Neo4J en fonction de la question posée.\n- Générer un diagramme **Mermaid** à partir des explications et des données.\n\nL’ensemble permet d’optimiser la recherche d’informations dans le cas de l'onboarding, d’améliorer l’accès à la connaissance métier au sein de l’entreprise et de retrouver plus facilement l'origine de problèmes pour les personnes du support.",
-      tech: ["AWS_Bedrock", "Python", "LLM","Neo4J","RAG", "KAG", "Agents IA", "LangChain", "Vue.js", "TypeScript", "Docker", "GitLab"],
+      tech: ["AWS Bedrock", "Python", "LLM","Neo4J","RAG", "KAG", "Agents IA", "LangChain", "Vue.js", "TypeScript", "Docker", "GitLab"],
       image: "/logos_projets/cats.png",
       github: "null",
       hasDetails: true,
