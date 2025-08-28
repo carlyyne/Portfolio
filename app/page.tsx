@@ -55,7 +55,7 @@ export default function Portfolio() {
       github: "null",
       hasDetails: true,
       documents: [
-        // { name: "Powerpoint - Présentation Oral Stage", url: "" },
+        { name: "Powerpoint - Présentation Oral Stage", url: "/projets/Oral_CATS.pdf" },
         // { name: "Rapport de Stage", url: "" },
       ],
     },
