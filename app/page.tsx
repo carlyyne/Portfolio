@@ -266,7 +266,7 @@ export default function Portfolio() {
           Étudiante Ingénieure | Informatique, Données et Usages
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/CV/CVBARRACHIN_Carlyne.pdf" download>
+          <a href="/CV/CVCarlyne_BARRACHIN.pdf" download>
             <Button
               className="px-7 py-3 bg-gradient-to-r from-pink-500/20 via-fuchsia-500/20 to-purple-500/20 border border-pink-500/30 bg-transparent rounded-full hover:bg-pink-500/20 hover:to-fuchsia-500/20">
               <Download className="mr-2" />
