@@ -50,7 +50,7 @@ export default function Portfolio() {
       title: "Simulateur CDR V2 - Mission Carbon Gap",
       description: "Développement de la V2 d'un outil de simulation Python/Streamlit dédié à la capture et au stockage du carbone (CDR).",
       detailedDescription: "Dans le cadre d'une mission freelance en tant qu'auto-entrepreneure pour **Carbon Gap**, je développe la **V2** d'un outil de simulation en **Python** et **Streamlit** dédié à la capture et au stockage du carbone (**CDR - Carbon Dioxide Removal**).\n\nCet outil permet de **modéliser et simuler** différents scénarios liés aux technologies de captage et de stockage du carbone, afin d'aider à la **prise de décision** sur des projets de réduction d'émissions.\n\nJe suis en charge de l'ensemble du développement de l'application, de la conception de l'interface utilisateur à l'implémentation des modèles de simulation.",
-      tech: ["Python", "Streamlit", "Data Visualization", "CDR, CSS", "Hugging Face Spaces"],
+      tech: ["Python", "Streamlit", "Data Visualization", "CDR", "CSS", "Hugging Face Spaces"],
       image: "/logos_projets/carbongap.svg",
       github: "https://huggingface.co/spaces/CGdev/CRRA_Optimization_Tool_V2",
       hasDetails: true,
