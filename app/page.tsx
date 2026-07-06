@@ -47,6 +47,16 @@ export default function Portfolio() {
 
   const projects = [
     {
+      title: "Simulateur CDR V2 - Mission Carbon Gap",
+      description: "Développement de la V2 d'un outil de simulation Python/Streamlit dédié à la capture et au stockage du carbone (CDR).",
+      detailedDescription: "Dans le cadre d'une mission freelance en tant qu'auto-entrepreneure pour **Carbon Gap**, je développe la **V2** d'un outil de simulation en **Python** et **Streamlit** dédié à la capture et au stockage du carbone (**CDR - Carbon Dioxide Removal**).\n\nCet outil permet de **modéliser et simuler** différents scénarios liés aux technologies de captage et de stockage du carbone, afin d'aider à la **prise de décision** sur des projets de réduction d'émissions.\n\nJe suis en charge de l'ensemble du développement de l'application, de la conception de l'interface utilisateur à l'implémentation des modèles de simulation.",
+      tech: ["Python", "Streamlit", "Data Visualization", "CDR, CSS", "Hugging Face Spaces"],
+      image: "/logos_projets/carbongap.svg",
+      github: "https://huggingface.co/spaces/CGdev/CRRA_Optimization_Tool_V2",
+      hasDetails: true,
+      documents: [],
+    },
+    {
       title: "ChatBot - Stage CA-TS",
       description: "Développement d'une documentation intéractive.",
       detailedDescription: "Dans le cadre de mon stage de fin d’études, j’ai développé un chatbot destiné à répondre aux questions des collaborateurs du **CA-TS** sur les projets **JAVA** internes.\nCe projet repose sur des modèles **LLM** accessibles via **AWS Bedrock** (Claude 3 Sonnet), intégrés à l’aide de l’outil **LangChain**. Les données extraites des projets sont stockées dans une base **Neo4j**, puis exploitées pour fournir des réponses personnalisées grâce à l’approche **KAG** (Knowledge-Augmented Generation).\n\nLe système combine plusieurs techniques avancées telles que le **RAG** (Retrieval-Augmented Generation), le **KAG**, et l’utilisation d’**agents IA contextuels**. Ces agents remplissent des rôles précis, comme :\n- Traduire une question utilisateur en une **Cypher query** pour interroger Neo4j.\n- Expliquer des données issues de Neo4J en fonction de la question posée.\n- Générer un diagramme **Mermaid** à partir des explications et des données.\n\nL’ensemble permet d’optimiser la recherche d’informations dans le cas de l'onboarding, d’améliorer l’accès à la connaissance métier au sein de l’entreprise et de retrouver plus facilement l'origine de problèmes pour les personnes du support.",
@@ -263,7 +273,7 @@ export default function Portfolio() {
           </span>
         </h1>
         <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-xl sm:mx-auto m-2">
-          Étudiante Ingénieure | Informatique, Données et Usages
+          Ingénieure | Informatique, Données et Usages
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/CV/CVCarlyne_BARRACHIN.pdf" download>
@@ -300,10 +310,13 @@ export default function Portfolio() {
               Ingénieure en informatique, à la recherche de nouvelles opportunités
             </h3>
             <p className="text-pink-50 mb-6 leading-relaxed text text-justify">
-              Je termine actuellement mon cycle ingénieur à <span className="font-semibold">Polytech Annecy</span>, spécialité <span className="font-semibold">Informatique, Données et Usages</span>. Après un semestre en <span className="font-semibold">ERASMUS</span> à l’Université Babeş-Bolyai de <span className="font-semibold">Cluj-Napoca</span>, j’ai rejoint le <span className="font-semibold">Crédit Agricole Technologies et Services</span> pour mon stage de fin d’études.
+              Diplômée de <span className="font-semibold">Polytech Annecy</span>, spécialité <span className="font-semibold">Informatique, Données et Usages</span>. Après un semestre en <span className="font-semibold">ERASMUS</span> à l'Université Babeş-Bolyai de <span className="font-semibold">Cluj-Napoca</span>, j'ai rejoint le <span className="font-semibold">Crédit Agricole Technologies et Services</span> pour mon stage de fin d'études.
             </p>
             <p className="text-pink-50 mb-6 leading-relaxed text text-justify">
-              Mes expériences au <span className="font-semibold">CERN</span>, chez <span className="font-semibold">CBTW</span> et <span className="font-semibold">CA-TS</span> m’ont permis d’acquérir des compétences solides en <span className="font-semibold">développement</span>, <span className="font-semibold">data</span>, <span className="font-semibold">monitoring</span> et <span className="font-semibold">intelligence artificielle</span>. Je suis aujourd’hui à la recherche d’un <span className="font-semibold">premier poste</span> où je pourrai mettre ces compétences au service de <span className="font-semibold">projets concrets</span> et continuer à progresser.
+              Mes expériences au <span className="font-semibold">CERN</span>, chez <span className="font-semibold">CBTW</span> et <span className="font-semibold">CA-TS</span> m'ont permis d'acquérir des compétences solides en <span className="font-semibold">développement</span>, <span className="font-semibold">data</span>, <span className="font-semibold">monitoring</span> et <span className="font-semibold">intelligence artificielle</span>.
+            </p>
+            <p className="text-pink-50 mb-6 leading-relaxed text text-justify">
+              Je poursuis actuellement une mission freelance en tant qu'auto-entrepreneure pour <span className="font-semibold">Carbon Gap</span>, où je développe un outil de simulation en <span className="font-semibold">Python/Streamlit</span> dédié à la capture et au stockage du carbone (CDR). En parallèle, je suis à la recherche d'un <span className="font-semibold">premier poste</span> où je pourrai mettre ces compétences au service de <span className="font-semibold">projets concrets</span> et continuer à progresser.
             </p>
               <div className="flex flex-wrap gap-3">
                 <Badge variant="secondary" className="bg-purple-100 text-purple-700">
@@ -378,7 +391,7 @@ export default function Portfolio() {
                     <Calendar className="w-4 h-4 text-purple-300 mt-1" />
                     <div>
                       <p className="text text-zinc-300 font-semibold">2022 – 2025</p>
-                      <p className="text-sm text-zinc-400">Cycle Ingénieur — Spécialité Informatique, Données & Usages</p>
+                      <p className="text-sm text-zinc-400">Cycle Ingénieur - Spécialité Informatique, Données & Usages</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -401,6 +414,14 @@ export default function Portfolio() {
               </div>
               <div>
                 <ul className="space-y-2 sm:space-y-4 text-sm text-zinc-300">
+                  <li className="flex items-start gap-3">
+                    <div className="w-2 h-2 mt-2 bg-green-500 rounded-full"></div>
+                    <div>
+                      <p className="font-medium text-white">Création de mon auto-entreprise: Mission freelance pour Carbon Gap</p>
+                      <p className="text-xs text-zinc-400">2026</p>
+                    </div>
+                  </li>
+
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 mt-2 bg-blue-500 rounded-full"></div>
                     <div>
@@ -432,7 +453,7 @@ export default function Portfolio() {
                       <p className="text-xs text-zinc-400 mb-1">2023–2024</p>
                       <ul className="text-zinc-400 list-disc list-inside text-sm space-y-1">
                         <li>Membre active du BDE Polytech</li>
-                        <li>Responsable communication d’une association de photos</li>
+                        <li>Responsable communication d'une association de photos</li>
                       </ul>
                     </div>
                   </li>
@@ -616,7 +637,7 @@ export default function Portfolio() {
               <div className="h-[200px] sm:h-[250px] md:h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={[
-                        { skill: "Python", proficiency: 3 },
+                        { skill: "Python", proficiency: 4 },
                         { skill: "TypeScript", proficiency: 3},
                         { skill: "Angular", proficiency: 2},
                         { skill: "Java", proficiency: 1},
@@ -694,7 +715,7 @@ export default function Portfolio() {
                   <RadarChart
                     data={[
                       { domain: "Big Data", level: 2 },
-                      { domain: "Full-Stack", level: 3 },
+                      { domain: "Full-Stack", level: 4 },
                       { domain: "IA/ChatBot", level: 3 },
                       { domain: "Cloud/Azure", level: 1 },
                       { domain: "DevOps", level: 2 }
@@ -738,6 +759,7 @@ export default function Portfolio() {
                       { exp: "BigData Montre (2025)", bigData: 1, fullStack: 0, ia: 0, cloud: 0, devops: 0 },
                       { exp: "App Réservation (2025)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 1 },
                       { exp: "CA-TS (2025)", bigData: 1, fullStack: 1, ia: 1, cloud: 0, devops: 1 },
+                      { exp: "Carbon Gap (2026)", bigData: 0, fullStack: 1, ia: 0, cloud: 0, devops: 1 },
                     ]} margin={{ top: 0, right: 15, left: 30, bottom: 70 }}> 
                     <XAxis
                       dataKey="exp"
